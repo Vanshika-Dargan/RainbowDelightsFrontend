@@ -36,8 +36,8 @@ export default function App() {
             <img src={sliderImg} alt={`Slide ${index + 1}`} className="slide-image" />
             <div className="absolute top-0 left-0 right-0 bottom-0 bg-black opacity-20"></div>
             <div className="slide-text">
-              <h2 className="slide-heading text-4xl mb-5">{slide.heading}</h2>
-              <h3 className="slide-subheading text-3xl leading-10">{slide.subHeading1}</h3>
+              <h2 className="slide-heading text-4xl mb-5 font-extrabold">{slide.heading}</h2>
+              <h3 className="slide-subheading text-3xl leading-10 font-medium">{slide.subHeading1}</h3>
             </div>
           </div>
         </SwiperSlide>
