@@ -4,7 +4,7 @@ import Image from '../../assets/cake1.png';
 
 const Hero = () => {
   return (
-    <div className="flex justify-center items-center w-full px-4 py-10 ">
+    <div className="flex justify-center items-center w-full px-4 py-2 ">
       
       <div className="flex flex-col md:flex-row items-stretch justify-center rounded-lg shadow-xl mx-2 md:mx-12 md:my-4 w-full md:max-w-6xl lg:max-w-7xl my-5 left-section">
         

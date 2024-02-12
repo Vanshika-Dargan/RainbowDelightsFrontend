@@ -20,7 +20,7 @@ const Products = () => {
 
   return (
     <div className = "mb-5">
-        <h1 className = "text-center mb-6 text-5xl colortext font-medium">Products</h1>
+        <h1 className = "text-center mb-6 text-5xl colortext font-medium pt-4">Products</h1>
         <div className="flex flex-wrap justify-center gap-4">
         {displayedProducts.map((product, index) => (
             <Card key={index} name={product.name} price={product.price} />

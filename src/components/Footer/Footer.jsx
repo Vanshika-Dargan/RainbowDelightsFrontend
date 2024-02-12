@@ -22,9 +22,9 @@ const Footer = () => {
         <h3 className="font-extrabold text-xl">Follow us</h3>
         <div className="flex space-x-4">
           <a href="https://www.facebook.com" target="_blank"><FaFacebookF className="cursor-pointer" /></a>
-          <FaTwitter className="cursor-pointer" />
-          <FaEnvelope className="cursor-pointer" />
-          <FaTiktok className="cursor-pointer" />
+          <a href="https://twitter.com/" target="_blank"><FaTwitter className="cursor-pointer" /></a>
+          <a href="https://mail.google.com" target="_blank"><FaEnvelope className="cursor-pointer" /></a>
+          <a href="https://www.tiktok.com" target="_blank"><FaTiktok className="cursor-pointer" /></a>
         </div>
       </div>
     </footer>
