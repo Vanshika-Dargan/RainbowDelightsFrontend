@@ -1,8 +1,8 @@
 import React from 'react';
 import { FaSearch, FaUserCircle, FaShoppingCart } from 'react-icons/fa';
-import './Header.css';
+import './Navbar.css';
 
-export default function Header() {
+export default function Navbar() {
     // State for the cart item count
     const [cartItemCount, setCartItemCount] = React.useState(15);
 
