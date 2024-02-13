@@ -1,36 +1,31 @@
-// Products.js
-import React from 'react'
-import Card from './Card/Card'
-import './Products.css'
+import React, { useState } from 'react';
+import Card from './Card/Card';
+import './Products.css';
+import ProductsData from '../../ProductsData';
+import ModalPopup from '../ModalPopup/ModalPopup';
 
 const Products = () => {
-  // Sample array of products
-  const products = [
-    { name: "Cupcake", price: "$4.99" },
-    { name: "Muffin", price: "$3.99" },
-    { name: "Cake Pop", price: "$2.99" },
-    { name: "Donut", price: "$1.99" },
-    { name: "Eclair", price: "$3.49" },
-    { name: "Brownie", price: "$2.49" }
-  ];
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
-  // Ensure we only show up to 4 products, and the 5th card is "See More"
-  const displayedProducts = products.slice(0, 4);
-  const seeMoreNeeded = products.length > 4;
+  const handleCardClick = (product) => {
+    setSelectedProduct(product);
+    setIsModalOpen(true);
+  };
 
   return (
-    <div className = "mb-5">
-        <h1 className = "text-center mb-6 text-5xl colortext font-medium pt-4">Products</h1>
-        <div className="flex flex-wrap justify-center gap-4">
-        {displayedProducts.map((product, index) => (
-            <Card key={index} name={product.name} price={product.price} />
+    <div className="mb-10">
+      <h1 className="text-center mb-6 text-4xl font-semibold pt-4 colortext">Our Products</h1>
+      <div className="flex flex-wrap justify-center gap-6">
+        {ProductsData.map((product) => (
+          <div onClick={() => handleCardClick(product)} key={product.id}>
+            <Card name={product.name} price={product.price} img={product.img} />
+          </div>
         ))}
-        {seeMoreNeeded && (
-            <Card key="see-more" name="See More" price="#" />
-        )}
-        </div>
+      </div>
+      <ModalPopup isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} product={selectedProduct} />
     </div>
   );
-}
+};
 
 export default Products;
