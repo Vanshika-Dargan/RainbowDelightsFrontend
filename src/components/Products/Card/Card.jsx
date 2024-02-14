@@ -10,7 +10,7 @@ const Card = ({ name, price, img }) => {
       </div>
       <div className="pb-4 pl-4 pr-4 flex justify-between">
         <h3 className="font-semibold text-xl colorname">{name}</h3>
-        <p className="text-lg font-bold colorprice">{price}</p>
+        <p className="text-lg font-bold colorprice">${price}</p>
       </div>
     </div>
   );
