@@ -28,12 +28,25 @@
     color: white;
     font-size: 22px;
     font-family: 'Abhaya Libre', serif;
+    cursor: pointer;
 }
 
 .das-icon-1{
     font-size: 23px;
 }
 
-.down-icon{
+.down-up-icon{
     font-size: 16px;
+}
+
+.dropdown-items{
+    color: #6A7187;
+    font-family: 'Abhaya Libre', serif;
+    text-align: left;
+    font-size: 18px;
+}
+
+.dropdown-item:hover{
+    color: white;
+    cursor: pointer;
 }
