@@ -5,17 +5,14 @@ import { Sidebar } from './Sidebar/Sidebar';
 
 export default function Dashboard() {
     const [isProductClicked, setIsProductClicked] = useState(false);
-    
-
     return (
-        <div className='flex'>
+        <div className='flex justify-stretch h-screen overflow-autos'>
             <Sidebar 
                 setIsProductClicked={setIsProductClicked} />
             {isProductClicked ?
                 <Product />
                 : <div>Default content </div>
             }
-
         </div>
     )
 }

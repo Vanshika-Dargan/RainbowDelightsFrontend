@@ -24,7 +24,7 @@ export const Sidebar = ({setIsProductClicked}) => {
 
     return (
         <>
-            <div className='w-1/4 bg-color-1'>
+            <div className='w-1/4 h-full bg-color-1 self-stretch overflow-auto'>
                 <div className='logo-font'>Rainbow delights</div>
                 <div className='color-1 mt-10'>MENU</div>
                 <div className='flex das ml-5 mt-2' onClick={() => { setIsDashboardClicked(prev => !prev) }}>

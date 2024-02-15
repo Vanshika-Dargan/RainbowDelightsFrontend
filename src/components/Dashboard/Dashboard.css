@@ -11,7 +11,6 @@
 
 .bg-color-1{
     background-color: #2A3042;
-    height: 100vh;
     text-align: center;
 }
 
@@ -53,4 +52,8 @@
 
 .dropdown-item:target{
     color: white;
+}
+
+.table-font{
+    font-family: 'Abhaya Libre', serif;
 }
