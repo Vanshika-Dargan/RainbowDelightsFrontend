@@ -43,10 +43,14 @@
     color: #6A7187;
     font-family: 'Abhaya Libre', serif;
     text-align: left;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .dropdown-item:hover{
     color: white;
     cursor: pointer;
+}
+
+.dropdown-item:target{
+    color: white;
 }
