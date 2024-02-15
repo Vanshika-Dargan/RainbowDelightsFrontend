@@ -1,8 +1,9 @@
 import React from 'react'
 
-const ShoppingCart = () => {
+const ShoppingCart = ({cart}) => {
   return (
     <div>ShoppingCart</div>
+    
   )
 }
 
