@@ -34,7 +34,7 @@ export default function Navbar() {
 
                     <div className="flex justify-center items-center relative w-full max-w-xs">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <FaSearch className="text-color" />
+                            <FaSearch className="text-color font-color" />
                         </div>
                         <input
                             className="border-2 bg-color h-10 pl-10 pr-16 rounded-lg text-sm focus:outline-none w-full border-color placeholder-pink-900"

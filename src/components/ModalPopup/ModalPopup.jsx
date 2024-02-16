@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
 import { FaCartPlus, FaTimes, FaMinus, FaPlus } from 'react-icons/fa';
+import { MdOutlineEgg } from "react-icons/md";
 import { ToastContainer, toast } from 'react-toastify'; //provide react notifications
 import { Tooltip } from 'react-tooltip' // provides tooltip for ingredients
 import 'react-toastify/dist/ReactToastify.css';
 import './ModalPopup.css';
+import EggIcon from "../../assets/egg-svgrepo-com.svg";
+import IceCreamIcon from "../../assets/icecream2-svgrepo-com.svg";
+import ChocolateIcon from "../../assets/chocolate-svgrepo-com.svg";
+import MilkIcon from "../../assets/milk-bottle-svgrepo-com.svg";
+import SugarIcon from "../../assets/sugar-svgrepo-com.svg";
+import WheatIcon from "../../assets/wheat-svgrepo-com.svg";
 
 const ModalPopup = ({ isOpen, onClose, product }) => {
   const [quantity, setQuantity] = useState(1);
@@ -61,14 +68,13 @@ const ModalPopup = ({ isOpen, onClose, product }) => {
             {product.ingredients.map((image) =>{
             //  checks image and adds tooltip according to the image
              return (<img src={image} className='inline pr-2' data-tooltip-id="my-tooltip"
-            data-tooltip-content={image === "/src/assets/egg-svgrepo-com.svg"? "egg" : image=="/src/assets/milk-bottle-svgrepo-com.svg" ? "milk" : 
-            image === "/src/assets/wheat-svgrepo-com.svg" ? "wheat" : image === "/src/assets/sugar-svgrepo-com.svg" ? "sugar" : 
-            image === "/src/assets/chocolate-svgrepo-com.svg" ? "coco" : image === "/src/assets/icecream2-svgrepo-com.svg" ? "icecream" : "none"}
+            data-tooltip-content={image === EggIcon ? "Egg" : image===MilkIcon ? "Milk" : image === WheatIcon ? "Wheat" :
+            image === SugarIcon ? "Sugar" : image === ChocolateIcon ? "Coco" : image === IceCreamIcon ? "Ice Cream" : "none"}
                 data-tooltip-place="top"/>);
             })}
             {/* Add tooltip to ingredients */}
             <Tooltip id="my-tooltip" />  
-            {/* <p className="mt-2 font-medium">{product.description}</p> */}
+            <p className="mt-2 font-medium">{product.description}</p>
             <p className="mt-2 text-3xl font-extrabold font-color">${product.price}</p>
             
             {/* Quantity and Subtotal Section */}
