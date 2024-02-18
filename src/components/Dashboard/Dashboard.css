@@ -5,16 +5,29 @@
 .logo-font{
     font-family: 'Italianno', cursive;
     color: white;
-    font-size: 46px;
-    cursor: pointer;
-}
-
-.bg-color-1{
-    background-color: #2A3042;
+    font-size: 42px;
+    /* cursor: pointer; */
     text-align: center;
 }
 
-.color-1{
+/* .bg-color-1{
+    background-color: #2A3042;
+    text-align: center;
+} */
+
+
+.siderbar-color{
+    background-color: #2A3042;
+    color: white;
+}
+
+.das-icons{
+    color: #9CA3AF;
+}
+
+
+
+/* .color-1{
     color: #6A7187;
     text-align: left;
     font-family: "Kameron", serif;
@@ -56,4 +69,4 @@
 
 .table-font{
     font-family: 'Abhaya Libre', serif;
-}
+} */
