@@ -7,14 +7,14 @@ export default function Dashboard() {
     const [isProductClicked, setIsProductClicked] = useState(false);
     return (
         <>
-        {/* <div className='flex justify-stretch h-screen overflow-autos'> */}
+        <div className='flex'>
             <Sidebar 
                 setIsProductClicked={setIsProductClicked} />
-            {/* {isProductClicked ?
+            {isProductClicked ?
                 <Product />
                 : <div>Default content </div>
-            } */}
-        {/* </div> */}
+            }
+        </div>
         </>
     )
 }

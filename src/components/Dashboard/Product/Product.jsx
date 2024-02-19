@@ -4,7 +4,7 @@ import { EachProduct } from './EachProduct';
 
 export const Product = () => {
     return (<>
-        {/* <div className='w-3/4 h-screen overflow-auto'>
+        <div className='w-3/4 h-screen overflow-auto'>
             <span className='ml-6 mt-4 table-font text-2xl'>Product</span>
             <table className='table-fixed table-font left-6 top-14'>
                 <thead className='border-b'>
@@ -21,7 +21,7 @@ export const Product = () => {
                     {productData.map((d) => <EachProduct key={d.id} productData={d} />)}
                 </tbody>
             </table>
-        </div> */}
+        </div>
     </>
     )
 }
