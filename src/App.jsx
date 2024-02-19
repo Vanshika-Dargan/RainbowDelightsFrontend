@@ -15,21 +15,21 @@ import Admin from './components/Admin/Admin';
 function App() {
   return (
       <Router>
-        <Navbar />
         <Routes>
-          <Route path="/cart" element={<ShoppingCart />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/orders" element={<Orders />} />
-          <Route path="/admin" element={<Admin />} />
+          <Route path="/cart" element={<><Navbar /><ShoppingCart /><Footer /></>} />
+          <Route path="/profile" element={<><Navbar /><Profile /><Footer /></>} />
+          <Route path="/orders" element={<><Navbar /><Orders /><Footer /></>} />
+          <Route path="/admin" element={<><Admin /></>} />
           <Route path="/" element = {
             <>
+              <Navbar />
               <Hero />
               <Products />
               <Slider />
+              <Footer />
             </>
           } />
         </Routes>
-        <Footer />
       </Router>
   );
 }

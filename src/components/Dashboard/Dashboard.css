@@ -2,6 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Kameron:wght@400..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@500;600;800&display=swap');
 
+body{
+    background-color: white;
+}
+
 .logo-font{
     font-family: 'Italianno', cursive;
     color: white;
