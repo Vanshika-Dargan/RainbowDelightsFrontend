@@ -15,7 +15,7 @@ export const Edit_product = ({ currentEditProduct, setIsProductEdited }) => {
             reader.readAsDataURL(file);
         }
     };
-
+    
     return (
         <>
             <div className="min-h-screen flex justify-center items-center bg-gray-100" style={{ width: "83%" }}>
@@ -36,7 +36,7 @@ export const Edit_product = ({ currentEditProduct, setIsProductEdited }) => {
                                 </div>
                                 <div className="mb-4">
                                     <label htmlFor="product_price" className="block text-gray-700 font-bold mb-2">Product Price</label>
-                                    <input type="number" id="product_price" name="product_price" value={parseInt(price.substring(1, price.length))}
+                                    <input type="number" id="product_price" name="product_price" value={price}
                                            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
                                 </div>
                                 <div className="mb-4">
