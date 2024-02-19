@@ -24,7 +24,7 @@ export const Sidebar = ({ setIsProductClicked }) => {
 
     return (
         <>
-            <aside id='default-sidebar' className=' w-64 h-screen top-0 left-0 z-40 siderbar-color'>
+            <aside id='default-sidebar' className='w-1/5 top-0 left-0 z-40 siderbar-color overflow-auto'>
                 <div className='logo-font'>Rainbow delights</div>
                 <div>
                     <ul>

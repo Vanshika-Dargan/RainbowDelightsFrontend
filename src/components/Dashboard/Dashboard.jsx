@@ -10,7 +10,7 @@ export default function Dashboard() {
     const [currentEditProduct,updateCurrentEditProduct]=useState({})
 
     return (
-        <div className='flex'>
+        <div className='flex '>
             <Sidebar setIsProductClicked={setIsProductClicked}  />
             {isProductClicked ? (
                 isProductEdited ? <Edit_product currentEditProduct={currentEditProduct}  setIsProductEdited={setIsProductEdited} /> : <Product setIsProductEdited={setIsProductEdited} updateCurrentEditProduct={updateCurrentEditProduct}/>

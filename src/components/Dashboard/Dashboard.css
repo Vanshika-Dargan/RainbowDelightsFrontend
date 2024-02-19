@@ -29,51 +29,33 @@ body{
     color: #9CA3AF;
 }
 
-
-
-/* .color-1{
-    color: #6A7187;
-    text-align: left;
-    font-family: "Kameron", serif;
-    margin-left: 25px;
-    font-weight: 500;
-    font-size: 16px;
+.product-table thead{
+    background-color: #F3F4F6;
+    border-top: 1px solid #cbcbcd;;
+    border-bottom: 1px solid #cbcbcd;
 }
 
-.das{
-    color: white;
-    font-size: 22px;
-    font-family: 'Abhaya Libre', serif;
-    cursor: pointer;
+.product-table thead th {
+    color: #6B7280;
 }
 
-.das-icon-1{
-    font-size: 23px;
+.product-table td{
+    padding-left: 15px;
+    padding-right: 15px;
+    border-bottom: 1px solid #cbcbcd;
 }
 
-.down-up-icon{
-    font-size: 16px;
+tr td img{
+    width: 120px;
+    object-fit: cover;
 }
 
-.dropdown-items{
-    color: #6A7187;
-    font-family: 'Abhaya Libre', serif;
-    text-align: left;
-    font-size: 20px;
+.searchbox{
+    border: 1px solid #cbcbcd;
+    background-color: #F3F4F6;
+    color: #6B7280;
 }
 
-.dropdown-item:hover{
-    color: white;
-    cursor: pointer;
+.searchbox:focus-visible{
+    border: none;
 }
-
-.dropdown-item:target{
-    color: white;
-}
-
-.table-font{
-    font-family: 'Abhaya Libre', serif;
-} */
-
-
-

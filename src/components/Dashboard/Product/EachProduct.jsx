@@ -2,13 +2,14 @@ import React from 'react';
 
 export const EachProduct = ({ productData, setIsProductEdited ,updateCurrentEditProduct}) => {
     return (
-        <tr>
-            <td className='border'>{productData.id}</td>
-            <td className='border'><img className='w-20 object-cover' src={productData.img} alt={productData.name} /></td>
-            <td className='border'>{productData.name}</td>
-            <td className='border'>{productData.price}</td>
-            <td className='border w-64'>{productData.description}</td>
-            <td className='border' onClick={() => { setIsProductEdited(true); updateCurrentEditProduct(productData); }}>Edit</td>
+        <tr className='h-32'>
+            <td className=''>{productData.id}</td>
+            <td className=''><img className='w-full h-32 object-cover' src={productData.img} alt={productData.name} /></td>
+            <td className=''>{productData.name}</td>
+            <td className=''>{productData.price}</td>
+            <td className='w-72'>{productData.description}</td>
+            <td className=''>
+                <span className='text-cyan-800 cursor-pointer' onClick={() => { setIsProductEdited(true); updateCurrentEditProduct(productData); }}>Edit</span>&nbsp;&nbsp;&nbsp;<span className='text-red-700 cursor-pointer'>Delete</span></td>
         </tr>
     );
 };
