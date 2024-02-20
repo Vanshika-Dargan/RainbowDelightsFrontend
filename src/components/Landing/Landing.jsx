@@ -1,8 +1,8 @@
 import React from 'react';
-import "./Hero.css"
+import "./Landing.css"
 import Image from '../../assets/cake1.png';
 
-const Hero = () => {
+const Landing = () => {
   return (
     <div className="flex justify-center items-center w-full px-4 py-2 ">
       
@@ -35,4 +35,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default Landing;

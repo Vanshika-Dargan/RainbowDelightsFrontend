@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FaSearch, FaUserCircle, FaShoppingCart } from 'react-icons/fa';
+import { PiCakeDuotone } from "react-icons/pi";
+import { IoIosColorWand } from "react-icons/io";
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
@@ -45,29 +47,35 @@ export default function Navbar() {
                     </div>
 
                     <div className="flex items-center space-x-4 relative">
-                        <div className="relative" ref={dropdownRef}>
-                            <div onClick={toggleDropdown} className="flex items-center font-color hover:cursor-pointer">
-                                <FaUserCircle className="h-6 w-6" />
-                            </div>
-                            {isDropdownOpen && (
-                                <div className="absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-xl z-20">
-                                    <Link to="/profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setIsDropdownOpen(false)}>User Profile</Link>
-                                    <Link to="/orders" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setIsDropdownOpen(false)}>Order Summary</Link>
-                                    <Link to="/admin" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setIsDropdownOpen(false)}>Admin Dashboard</Link>
-                                </div>
-                            )}
+                    <Link to="/customize" className="flex items-center font-color relative">
+                        <div className="relative">
+                            <PiCakeDuotone className="h-6 w-6" />
+                            <IoIosColorWand className="absolute top-0 right--1 h-4 w-4 transform translate-x-1/2 -translate-y-2/3" />
                         </div>
-                        <Link to="/cart" className="flex items-center font-color relative">
-                            <FaShoppingCart className="h-6 w-6" />
-                            {cartItemCount > 0 && (
-                                <span className="flex absolute -top-2 -right-2 justify-center items-center bg-red-500 text-white text-xs font-bold rounded-full h-4 w-4 font-mono">
-                                    {cartItemCount}
-                                </span>
-                            )}
-                        </Link>
+                    </Link>
+                    <div className="relative" ref={dropdownRef}>
+                        <div onClick={toggleDropdown} className="flex items-center font-color hover:cursor-pointer">
+                            <FaUserCircle className="h-6 w-6" />
+                        </div>
+                        {isDropdownOpen && (
+                            <div className="absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-xl z-20">
+                                <Link to="/profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setIsDropdownOpen(false)}>User Profile</Link>
+                                <Link to="/orders" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setIsDropdownOpen(false)}>Order Summary</Link>
+                                <Link to="/admin" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setIsDropdownOpen(false)}>Admin Dashboard</Link>
+                            </div>
+                        )}
                     </div>
+                    <Link to="/cart" className="flex items-center font-color relative">
+                        <FaShoppingCart className="h-6 w-6" />
+                        {cartItemCount > 0 && (
+                            <span className="flex absolute -top-2 -right-2 justify-center items-center bg-red-500 text-white text-xs font-bold rounded-full h-4 w-4 font-mono">
+                                {cartItemCount}
+                            </span>
+                        )}
+                    </Link>
                 </div>
             </div>
-        </nav>
+        </div>
+    </nav>
     );
 }

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { FaCartPlus, FaTimes, FaMinus, FaPlus } from 'react-icons/fa';
-import { MdOutlineEgg } from "react-icons/md";
 import { ToastContainer, toast } from 'react-toastify'; //provide react notifications
 import { Tooltip } from 'react-tooltip' // provides tooltip for ingredients
 import 'react-toastify/dist/ReactToastify.css';
