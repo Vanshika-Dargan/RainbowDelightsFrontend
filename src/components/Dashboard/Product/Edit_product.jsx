@@ -17,7 +17,7 @@ export const Edit_product = ({ currentEditProduct, setIsProductEdited }) => {
     };
     return (
         <>
-            <div className="min-h-screen flex justify-center items-center bg-gray-100" style={{ width: "83%" }}>
+            <div className="min-h-screen flex justify-center items-center bg-gray-100 w-4/5" >
                 <div className="max-w-md w-full mx-4 bg-white rounded-lg overflow-hidden md:max-w-lg relative">
                     <div className="absolute top-0 right-0 mt-2 mr-2" onClick={() => { setIsProductEdited(false) }}>
                         <svg className="h-6 w-6 text-red-500 cursor-pointer" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
