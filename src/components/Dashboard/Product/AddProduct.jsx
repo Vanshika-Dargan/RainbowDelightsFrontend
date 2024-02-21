@@ -15,6 +15,55 @@ const AddProduct = ({setIsAddProductClicked}) => {
             reader.readAsDataURL(file);
         }
     };
+    function handleSubmit(event) {
+        console.log("calling post...")
+        event.preventDefault();
+
+        const apiUrl = "http://localhost:1000/product/add";
+        const requestData = {
+            name: document.getElementById("product_name").value,
+            net_quantity: document.getElementById("net_quantity").value,
+            quantity_per_item: document.getElementById("quantity_per_item").value,
+
+            cost_per_item: document.getElementById("cost_per_item").value,
+
+            weight_per_item: document.getElementById("weight_per_item").value,
+            ingredients:document.getElementById("ingredients").value,
+            category:document.getElementById("category").value,
+            image: document.getElementById("product_image").value
+
+        };
+
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(requestData)
+        };
+
+        fetch(apiUrl, requestOptions)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                document.getElementById("product_name").value="";
+                document.getElementById("net_quantity").value="";
+                document.getElementById("quantity_per_item").value="";
+                document.getElementById("cost_per_item").value="";
+                document.getElementById("weight_per_item").value="";
+                document.getElementById("ingredients").value="";
+                document.getElementById("category").value="";
+                document.getElementById("product_image").value="";
+                setNewImg(noimage);
+
+            })
+            .catch((err) => {
+                console.log("error", err);
+            });
+    }
+
     return (
 
             <>
@@ -28,16 +77,13 @@ const AddProduct = ({setIsAddProductClicked}) => {
                         <div className="md:flex">
                             <div className="w-full px-4 py-6">
                                 <h2 className="text-center text-2xl font-bold mb-3">Product Profile</h2>
-                                <form>
+                                <form onSubmit={handleSubmit}>
                                     <div className="grid grid-cols-2 gap-4">
                                         <div className="mb-4">
                                             <label htmlFor="product_name" className="block text-gray-700 font-bold mb-2">Product Name</label>
-                                            <input type="text" id="product_name" name="product_name" className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
+                                            <input type="text" id="product_name" name="name" className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
                                         </div>
-                                        <div className="mb-4">
-                                            <label htmlFor="product_price" className="block text-gray-700 font-bold mb-2">Product Price</label>
-                                            <input type="number" id="product_price" name="product_price" className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
-                                        </div>
+
                                         <div className="mb-4">
                                             <label htmlFor="net_quantity" className="block text-gray-700 font-bold mb-2">Net Quantity</label>
                                             <input type="number" id="net_quantity" name="net_quantity" className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
@@ -68,7 +114,7 @@ const AddProduct = ({setIsAddProductClicked}) => {
                                         <img src={newImg} alt="Product Image" className="w-32 h-auto" style={{ width: "200px", height: "200px" }} />
 
                                         <div style={{ marginLeft: "50px" }}>
-                                            <input type="file" id="product_image" name="product_image" accept="image/*" className="hidden" onChange={handleImageChange} />
+                                            <input type="file" id="product_image" name="image" accept="image/*" className="hidden" onChange={handleImageChange} />
                                             <label htmlFor="product_image" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer">Upload Image</label>
                                         </div>
                                     </div>
