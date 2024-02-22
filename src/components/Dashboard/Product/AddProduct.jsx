@@ -15,7 +15,7 @@ const AddProduct = ({setIsAddProductClicked}) => {
             reader.readAsDataURL(file);
         }
     };
-    function handleSubmit(event) {
+    function Add_Product(event) {
         console.log("calling post...")
         event.preventDefault();
 
@@ -77,7 +77,7 @@ const AddProduct = ({setIsAddProductClicked}) => {
                         <div className="md:flex">
                             <div className="w-full px-4 py-6">
                                 <h2 className="text-center text-2xl font-bold mb-3">Product Profile</h2>
-                                <form onSubmit={handleSubmit}>
+                                <form onSubmit={Add_Product}>
                                     <div className="grid grid-cols-2 gap-4">
                                         <div className="mb-4">
                                             <label htmlFor="product_name" className="block text-gray-700 font-bold mb-2">Product Name</label>
