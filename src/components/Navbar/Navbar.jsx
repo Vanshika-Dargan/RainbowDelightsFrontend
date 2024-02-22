@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FaSearch, FaUserCircle, FaShoppingCart } from 'react-icons/fa';
+import { BiSolidMessageDots } from "react-icons/bi";
+
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
@@ -64,6 +66,11 @@ export default function Navbar() {
                                     {cartItemCount}
                                 </span>
                             )}
+                        </Link>
+
+                        <Link to="/chatbox" className="flex items-center font-color relative">
+                            <BiSolidMessageDots className="h-7 w-7" />
+
                         </Link>
                     </div>
                 </div>

@@ -1,9 +1,32 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import productData from '../../../ProductsData';
 import { EachProduct } from './EachProduct';
 
 // Destructure setIsProductEdited from props
 export const Product = ({ setIsProductEdited, updateCurrentEditProduct ,setIsAddProductClicked }) => {
+
+
+    const [data, setData] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch('http://localhost:1000/product/products');
+                const jsonData = await response.json();
+                setData(jsonData);
+                console.log(jsonData);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+
+
+
+
     return (
         <div className='w-4/5 h-screen overflow-auto'>
             <div className='ml-2 py-2 text-2xl'>All Products</div>
@@ -18,8 +41,14 @@ export const Product = ({ setIsProductEdited, updateCurrentEditProduct ,setIsAdd
                             <th className='py-3 text-sm'>PRODUCT ID</th>
                             <th className='py-3 text-sm'>IMAGE</th>
                             <th className='py-3 text-sm'>NAME</th>
-                            <th className='py-3 text-sm'>PRICE</th>
-                            <th className='py-3 text-sm'>DESCRIPTION</th>
+                            <th className='py-3 text-sm'>COST PER ITEM</th>
+                            <th className='py-3 text-sm'>WEIGHT PER ITEM</th>
+                            <th className='py-3 text-sm'>QUANTITY PER ITEM</th>
+                            <th className='py-3 text-sm'>NET QUANTITY</th>
+                            <th className='py-3 text-sm'>CATEGORY</th>
+                            <th className='py-3 text-sm'>INGREDIENTS</th>
+
+
                             <th className='py-3 text-sm'>ACTION</th>
                         </tr>
                     </thead>

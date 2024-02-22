@@ -11,6 +11,7 @@ import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 import Profile from './components/Profile/Profile';
 import Orders from './components/Orders/Orders';
 import Admin from './components/Admin/Admin';
+import Chatbox from "./components/Chatbox/Chatbox.jsx";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/profile" element={<><Navbar /><Profile /><Footer /></>} />
           <Route path="/orders" element={<><Navbar /><Orders /><Footer /></>} />
           <Route path="/admin" element={<><Admin /></>} />
+          <Route path="/chatbox" element={<><Navbar/><Chatbox/><Footer /></>}/>
           <Route path="/" element = {
             <>
               <Navbar />

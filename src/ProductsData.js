@@ -6,7 +6,10 @@ import IceCake from "./assets/Products/icecream_cake.jpg";
 import Pie from "./assets/Products/pie.jpg";
 import CupCake from "./assets/Products/cupcakes.jpg";
 import Eclairs from "./assets/Products/eclairs.jpg";
+
+
 const ProductsData=[
+
     {
         id: 1,
         name: "Birthday Cakes",
