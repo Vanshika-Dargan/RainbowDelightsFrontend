@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import productData from '../../../ProductsData';
 import { EachProduct } from './EachProduct';
-
+const allProducts=[];
 // Destructure setIsProductEdited from props
 export const Product = ({ setIsProductEdited, updateCurrentEditProduct ,setIsAddProductClicked }) => {
+    useEffect(()=>{
+        fetch('http://localhost:5000/product/products')
+        .then(res => res.json())
+        .then((res)=>{
+            for(const d of res){
+                allProducts.push(d)
+            }
+        })
+    },[]);
+
     return (
         <div className='w-4/5 h-screen overflow-auto'>
             <div className='ml-2 py-2 text-2xl'>All Products</div>
