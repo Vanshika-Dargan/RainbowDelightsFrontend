@@ -24,7 +24,7 @@ export default function Dashboard() {
                 ) : isProductClicked ? (
                     isProductEdited ? <Edit_product currentEditProduct={currentEditProduct} setIsProductEdited={setIsProductEdited}  /> : <Product setIsProductEdited={setIsProductEdited} updateCurrentEditProduct={updateCurrentEditProduct} setIsAddProductClicked={setIsAddProductClicked} />
                 ) : (
-                    <div>Default content</div>
+                    <div className='h-screen'>Default content</div>
                 )
             )}
         </div>
