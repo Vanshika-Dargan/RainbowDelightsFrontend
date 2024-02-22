@@ -19,6 +19,7 @@ const ModalPopup = ({ isOpen, onClose, product }) => {
 
   const handleAddToCart = () => {
     toast.success('Added to Cart!', {
+      className: "toast-color",
       position: "top-right",
       autoClose: 2000,
       hideProgressBar: false,
@@ -26,7 +27,6 @@ const ModalPopup = ({ isOpen, onClose, product }) => {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme: "colored",
       });
     
     updatedCart.push({ name: product.name, price: product.price, img: product.img, quantity: parseInt(quantity) });

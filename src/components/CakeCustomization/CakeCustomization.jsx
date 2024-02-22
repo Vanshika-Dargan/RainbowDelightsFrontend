@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 import BaseFlavour from '../../BaseFlavour';
 import Decoration from '../../Decoration';
 import Toppings from '../../Toppings';
@@ -42,6 +43,17 @@ function CakeCustomization() {
   };
 
   const handleSubmit = () => {
+    toast.success('Customization request sent to Baker!', {
+        className: "toast-color",
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
+
     console.log({
       selectedWeights: Array.from(selectedWeights).map(id => `${Weight.find(w => w.id === id).size} kg`)[0],
       selectedBaseFlavour: BaseFlavour.find(f => f.id === selectedBaseFlavour)?.name || "None",
@@ -162,12 +174,14 @@ function CakeCustomization() {
 <div className="flex flex-col my-4">
   <h2 className="text-2xl font-semibold pb-1 text-center text-font-color">When you want?</h2>
   <div className="flex justify-evenly">
-    <input
-      type="date"
-      value={deliveryDate}
-      onChange={e => setDeliveryDate(e.target.value)}
-      className="border border-gray-300 rounded py-1 px-5"
-    />
+  <input
+  type="date"
+  value={deliveryDate}
+  onChange={e => setDeliveryDate(e.target.value)}
+  min={new Date().toISOString().split('T')[0]}
+  className="border border-gray-300 rounded py-1 px-5"
+/>
+
     <select
   value={deliveryTime}
   onChange={e => setDeliveryTime(e.target.value)}
@@ -201,6 +215,17 @@ Prices may vary based on additional requirements you have specified.
      >
 Submit
 </button>
+<ToastContainer
+            position="top-right"
+            autoClose={10000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"/>
 </div>
 </div>
 );
