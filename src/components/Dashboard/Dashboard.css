@@ -59,3 +59,43 @@ tr td img{
 .searchbox:focus-visible{
     border: none;
 }
+
+
+.message_div{
+    box-shadow: 1px 1px 4px #242424;
+    border-radius: 20px 0px 20px 0px;
+    max-width: 40%;
+    overflow-wrap: break-word;
+}
+
+/*To remove Scroll*/
+.message_section {
+    overflow: scroll;
+    -ms-overflow-style: none; /* for IE and Edge */
+    scrollbar-width: none; /* for Firefox */
+    background: #def0ff;
+}
+
+.message_section::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+}
+
+
+.success_alert_message {
+    width: 76%;
+    height: 8vh;
+    background: #73e073;
+    position: fixed;
+    margin: 70px 27px;
+    padding: 17px;
+    border-radius: 9px;
+    text-align: center;
+    font-size: 18px;
+    opacity: 1; /* Initial opacity */
+    transition: opacity 1s; /* Transition for opacity property */
+}
+
+.success_alert_message.deactive {
+    opacity: 0; /* Set opacity to 0 when deactive class is added */
+    pointer-events: none; /* Disable pointer events when message is hidden */
+}

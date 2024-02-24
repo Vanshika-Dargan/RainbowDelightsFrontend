@@ -1,3 +1,115 @@
 .operator_message{
     background: #742437;
 }
+
+
+#chat-icon{
+    width: 60px;
+    height: 60px;
+    background: #742437;
+    border-radius: 50px;
+    color: white;
+    transition: 0.2s;
+    box-shadow: 1px 1px 15px black;
+
+}
+#chat-icon:hover{
+    color: #742437;
+    background: white;
+    cursor: pointer;
+}
+
+.move_chaticon{
+    animation: 0.2s move_chaticon linear;
+    top: 100%;
+
+}
+
+@keyframes move_chaticon {
+    0%{
+        top: 91%;
+    }
+
+
+
+    100%{
+
+      top: 100%;
+    }
+}
+
+
+.close_chat_class{
+    display: none;
+}
+
+
+.open_chatbox{
+    display: flex;
+    animation: 0.4s open_chat linear;
+    transition: 1s;
+
+}
+
+@keyframes open_chat {
+    0%{
+        opacity: 0;
+        margin-bottom: 0.1rem;
+    }
+
+
+    50%{
+        opacity: 0;
+        margin-bottom: 0.1rem;
+
+    }
+    100%{
+        opacity: 1;
+        margin-bottom: 1.5rem;
+
+    }
+}
+
+
+.chat_button{
+    background: #742437;
+    transition: 0.3s;
+    color: white;
+}
+
+.chat_button:hover{
+    background: white;
+    color: #742437;
+    cursor: pointer;
+    box-shadow: 1px 1px 5px #742437;
+}
+
+
+.preloader{
+    width: 125px;
+    height: 125px;
+    margin: auto;
+
+}
+
+
+
+.message_div{
+    box-shadow: 1px 1px 4px #242424;
+    border-radius: 20px 0px 20px 0px;
+    max-width: 60%;
+    overflow-wrap: break-word;
+}
+
+
+
+.message_section_home {
+    overflow: scroll;
+    -ms-overflow-style: none; /* for IE and Edge */
+    scrollbar-width: none; /* for Firefox */
+}
+
+.message_color-2{
+    background: rgb(10 183 255 / 67%);
+    color: #2A3042;
+}

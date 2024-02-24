@@ -68,10 +68,7 @@ export default function Navbar() {
                             )}
                         </Link>
 
-                        <Link to="/chatbox" className="flex items-center font-color relative">
-                            <BiSolidMessageDots className="h-7 w-7" />
 
-                        </Link>
                     </div>
                 </div>
             </div>

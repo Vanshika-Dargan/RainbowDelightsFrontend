@@ -15,15 +15,17 @@ import Chatbox from "./components/Chatbox/Chatbox.jsx";
 
 function App() {
   return (
+      <>
+
       <Router>
         <Routes>
           <Route path="/cart" element={<><Navbar /><ShoppingCart /><Footer /></>} />
           <Route path="/profile" element={<><Navbar /><Profile /><Footer /></>} />
           <Route path="/orders" element={<><Navbar /><Orders /><Footer /></>} />
           <Route path="/admin" element={<><Admin /></>} />
-          <Route path="/chatbox" element={<><Navbar/><Chatbox/><Footer /></>}/>
           <Route path="/" element = {
             <>
+              <Chatbox/>
               <Navbar />
               <Hero />
               <Products />
@@ -33,6 +35,8 @@ function App() {
           } />
         </Routes>
       </Router>
+
+      </>
   );
 }
 
