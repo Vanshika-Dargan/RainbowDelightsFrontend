@@ -19,27 +19,21 @@ const AddProduct = ({setIsAddProductClicked}) => {
         console.log("calling post...")
         event.preventDefault();
 
-        const apiUrl = "http://localhost:1000/product/add";
-        const requestData = {
-            name: document.getElementById("product_name").value,
-            net_quantity: document.getElementById("net_quantity").value,
-            quantity_per_item: document.getElementById("quantity_per_item").value,
+        const apiUrl = "http://localhost:5000/product/add";
 
-            cost_per_item: document.getElementById("cost_per_item").value,
-
-            weight_per_item: document.getElementById("weight_per_item").value,
-            ingredients:document.getElementById("ingredients").value,
-            category:document.getElementById("category").value,
-            image: document.getElementById("product_image").value
-
-        };
+        // Prepare form data
+        const formData = new FormData();
+        formData.append('name', document.getElementById("product_name").value);
+        formData.append('netQuantity', document.getElementById("net_quantity").value);
+        formData.append('price', document.getElementById("cost_per_item").value);
+        formData.append('weight', document.getElementById("weight_per_item").value);
+        formData.append('category', document.getElementById("category").value);
+        formData.append('description', document.getElementById("description").value);
+        formData.append('image', document.getElementById("product_image").files[0]); // Append the file
 
         const requestOptions = {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(requestData)
+            body: formData  // Use form data instead of JSON.stringify
         };
 
         fetch(apiUrl, requestOptions)
@@ -48,14 +42,13 @@ const AddProduct = ({setIsAddProductClicked}) => {
                     throw new Error('Network response was not ok');
                 }
 
-                document.getElementById("product_name").value="";
-                document.getElementById("net_quantity").value="";
-                document.getElementById("quantity_per_item").value="";
-                document.getElementById("cost_per_item").value="";
-                document.getElementById("weight_per_item").value="";
-                document.getElementById("ingredients").value="";
-                document.getElementById("category").value="";
-                document.getElementById("product_image").value="";
+                document.getElementById("product_name").value = "";
+                document.getElementById("net_quantity").value = "";
+                document.getElementById("cost_per_item").value = "";
+                document.getElementById("weight_per_item").value = "";
+                document.getElementById("description").value = "";
+                document.getElementById("category").value = "";
+                document.getElementById("product_image").value = "";
                 setNewImg(noimage);
 
             })
@@ -63,6 +56,7 @@ const AddProduct = ({setIsAddProductClicked}) => {
                 console.log("error", err);
             });
     }
+
 
     return (
 
@@ -88,10 +82,7 @@ const AddProduct = ({setIsAddProductClicked}) => {
                                             <label htmlFor="net_quantity" className="block text-gray-700 font-bold mb-2">Net Quantity</label>
                                             <input type="number" id="net_quantity" name="net_quantity" className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
                                         </div>
-                                        <div className="mb-4">
-                                            <label htmlFor="quantity_per_item" className="block text-gray-700 font-bold mb-2">Quantity per Item</label>
-                                            <input type="number" id="quantity_per_item" name="quantity_per_item" className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
-                                        </div>
+
                                         <div className="mb-4">
                                             <label htmlFor="cost_per_item" className="block text-gray-700 font-bold mb-2">Cost per Item</label>
                                             <input type="number" id="cost_per_item" name="cost_per_item" className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
@@ -105,8 +96,8 @@ const AddProduct = ({setIsAddProductClicked}) => {
                                             <input type="text" id="category" name="category" className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
                                         </div>
                                         <div className="mb-4">
-                                            <label htmlFor="ingredients" className="block text-gray-700 font-bold mb-2">Ingredients</label>
-                                            <textarea id="ingredients" name="ingredients" className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"></textarea>
+                                            <label htmlFor="description" className="block text-gray-700 font-bold mb-2">Description</label>
+                                            <textarea id="description" name="description" className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"></textarea>
                                         </div>
                                     </div>
                                     <label htmlFor="product_image" className="block text-gray-700 font-bold mb-2 mr-2">Product Image</label>
