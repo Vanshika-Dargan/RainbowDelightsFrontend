@@ -182,7 +182,7 @@ const OperatorChat = () => {
 
 
     return (
-        <div className="flex flex-col h-full bg-gray-100 rounded border-gray-300" style={{ width: "80%", height: "100vh"}}>
+        <div className="flex flex-col h-full bg-gray-100 rounded border-gray-300 responsive_side_adjust" style={{ width: "100%", height: "100vh"}} >
             <div className="success_alert_message deactive"><p><b>{clientName}</b> Has been assigned !!!! </p></div>
             <p id={"username"} style={{display:"none"}}>{clientName}</p>
             <div className="bg-purple-600 text-white py-3 px-4 flex" style={{background:"#2a3042"}}>
@@ -195,7 +195,7 @@ const OperatorChat = () => {
                         <div className="flex justify-end w-1/2 items-center">
                             <span className="text-lg font-bold mr-1">{clientInQueue}</span>
                             <IoPerson />
-                            <button className="ml-4 bg-indigo-500 text-white px-3 py-2 rounded-md hover:bg-indigo-600" onClick={get_client}>Request Client</button>
+                            <button className="ml-4 bg-indigo-500 text-white px-3 py-2 rounded-md hover:bg-indigo-600 operator_button" onClick={get_client}>Request Client</button>
                         </div>
                     </>
                 ) : (
@@ -220,7 +220,7 @@ const OperatorChat = () => {
 
             </div>
             <form className="flex items-center border-t border-gray-300 mx-2" onSubmit={send_message}>
-                    <input type="text" placeholder="Type your message..." className="flex-1 p-2 border border-gray-300 rounded-l focus:outline-none h-12"  id={"message_text"} />
+                    <input type="text" placeholder="Type your message..." className="flex-1 p-2 border border-gray-300 rounded-l focus:outline-none h-12 ml-1"  id={"message_text"} />
                     <button type={"submit"} className="bg-indigo-500 text-white py-2 px-4 rounded-r hover:bg-indigo-600 h-12">Send</button>
 
             </form>

@@ -12,6 +12,11 @@ body{
     font-size: 42px;
     /* cursor: pointer; */
     text-align: center;
+    justify-content: space-around;
+}
+
+.sidenav_width{
+    width: 310px;
 }
 
 /* .bg-color-1{
@@ -23,6 +28,25 @@ body{
 .siderbar-color{
     background-color: #2A3042;
     color: white;
+    min-height: 100vh;
+    transition: 1s;
+
+}
+
+@media only screen and (max-width: 1300px) {
+    #default-sidebar{
+        position: absolute;
+    }
+
+    .responsive_side_adjust{
+        margin-left: 3rem;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .operator_button{
+        font-size: 12px;
+    }
 }
 
 .das-icons{
@@ -73,7 +97,6 @@ tr td img{
     overflow: scroll;
     -ms-overflow-style: none; /* for IE and Edge */
     scrollbar-width: none; /* for Firefox */
-    background: #def0ff;
 }
 
 .message_section::-webkit-scrollbar {
@@ -99,3 +122,46 @@ tr td img{
     opacity: 0; /* Set opacity to 0 when deactive class is added */
     pointer-events: none; /* Disable pointer events when message is hidden */
 }
+
+
+.sidenav_animate_close{
+    animation: 0.3s sidenav_close_animation linear;
+}
+
+
+
+.sidenav_animate_open{
+    animation: 0.3s sidenav_open_animation linear;
+}
+
+@keyframes sidenav_open_animation {
+    0%{
+        width: 3rem;
+    }
+    100%{
+        width: 20rem;
+    }
+
+}
+
+@keyframes sidenav_close_animation {
+    0%{
+        width: 20rem;
+    }
+    100%{
+        width: 3rem;
+    }
+}
+
+.close_icon{
+    width: 33px;
+    height: 33px;
+    border-radius: 5px;
+    border: 1px solid white;
+    padding: 6px;
+    margin: 14px 10px 0px 10px;
+}
+.close_icon:hover{
+    cursor: pointer;
+}
+

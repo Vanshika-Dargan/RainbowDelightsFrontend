@@ -28,7 +28,7 @@ export const Product = ({ setIsProductEdited, updateCurrentEditProduct ,setIsAdd
 
 
     return (
-        <div className='w-4/5 h-screen overflow-auto'>
+        <div className=' h-screen overflow-auto w-full responsive_side_adjust'>
             <div className='ml-2 py-2 text-2xl'>All Products</div>
             <div className='flex justify-between'>
                 <input className='searchbox p-2 w-4/12 ml-2 my-3' type='search' placeholder='search for products' />
