@@ -1,10 +1,11 @@
 import React from 'react';
 
 export const EachProduct = ({ productData, setIsProductEdited ,updateCurrentEditProduct}) => {
+    let s= productData.image.split("\\");
     return (
         <tr className='h-32'>
             <td className=''>{productData.id}</td>
-            <td className=''><img className='w-full h-32 object-cover' src={productData.img} alt={productData.name} /></td>
+            <td className=''><img className='w-full h-32 object-cover' src={"http://localhost:5000/" + s[0]+ "/" +s[1]} alt={productData.name} /></td>
             <td className=''>{productData.name}</td>
             <td className=''>{productData.price}</td>
             <td className=''>{productData.weight}</td>
