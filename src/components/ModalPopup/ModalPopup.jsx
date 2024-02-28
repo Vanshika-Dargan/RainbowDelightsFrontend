@@ -60,8 +60,10 @@ const ModalPopup = ({ isOpen, onClose, product }) => {
             <img src={product.img} alt={product.name} className="max-h-60 max-w-xs object-cover mx-auto" />
           </div>
           <div className="w-1/2 p-4">
-            {product.piece && <h2 className="text-2xl font-extrabold colorname">{product.name} - {product.piece} pieces</h2>}
-            {!product.piece && <h2 className="text-2xl font-extrabold colorname">{product.name}</h2>}
+            {product.piece && product.weight && <h2 className="text-2xl font-extrabold colorname">{product.name} - {product.piece} pieces ({product.weight}g)</h2>}
+            {product.piece && !product.weight && <h2 className="text-2xl font-extrabold colorname">{product.name} - {product.piece} pieces</h2>}
+            {!product.piece && product.weight && <h2 className="text-2xl font-extrabold colorname">{product.name} ({product.weight}g)</h2>}
+            {!product.piece && !product.weight && <h2 className="text-2xl font-extrabold colorname">{product.name}</h2>}
             {/* Displays the ingredients */}
             <p className="mt-2 font-medium" >Ingredients:</p>
             {product.ingredients.map((image) =>{

@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
+import Axios from '../../../utils/Axios';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
-    username: '',
+    userName: '',
     email: '',
     password: '',
+    userType: 'client'
   });
 
-  // Mock encryption function for demonstration. Replace with real encryption logic on your backend.
-  const encryptPassword = (password) => `encrypted-${password}`;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,8 +23,14 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const encryptedPassword = encryptPassword(formData.password);
-    console.log(`Username: ${formData.username}, Email: ${formData.email}, Password: ${encryptedPassword}`);
+    console.log(`userName: ${formData.userName}, Email: ${formData.email}, Password: ${formData.password}, userType: ${formData.userType}`);
+    Axios.post('signup', formData)
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
     toast("Account has been created!", { position: "top-center" });
   };
 
@@ -37,19 +43,19 @@ const Signup = () => {
       </div>
       <form onSubmit={handleSubmit}>
         <div className="mt-4">
-          <label htmlFor="username" className="block font-medium text-gray-700 focus:text-pink-900">Username</label>
+          <label htmlFor="userName" className="block font-medium text-gray-700 focus:text-pink-900">userName</label>
           <input
             type="text"
-            name="username"
-            id="username"
+            name="userName"
+            id="userName"
             required
             className="mt-1 w-full border-b-2 border-gray-300 px-0 py-1 focus:border-pink-900 focus:outline-none"
             onChange={handleChange}
-            value={formData.username}
+            value={formData.userName}
           />
         </div>
         <div className="mt-4">
-          <label htmlFor="email" className="block font-medium text-gray-700">Email Address</label>
+          <label htmlFor="name" className="block font-medium text-gray-700">Email Address</label>
           <input
             type="email"
             name="email"

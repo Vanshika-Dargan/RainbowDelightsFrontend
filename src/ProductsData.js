@@ -29,6 +29,7 @@ const ProductsData=[
         price: 100,
         piece:null,
         ingredients:[egg,milk,sugar],
+        weight:1000,
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quae molestiae blanditiis autem quasi ducimus.",
         category: "Cakes"
     },
@@ -39,6 +40,7 @@ const ProductsData=[
         price: 75,
         piece:3,
         ingredients:[egg,milk,choco,sugar],
+        weight:200,
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quae molestiae blanditiis autem quasi ducimus.",
         category: "Cakes"
     },
@@ -49,6 +51,7 @@ const ProductsData=[
         price: 100,
         piece:5,
         ingredients:[egg,milk,choco,sugar,wheat],
+        weight:100,
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quae molestiae blanditiis autem quasi ducimus.",
         category: "Biscuits"
     },
@@ -59,6 +62,7 @@ const ProductsData=[
         price: 20,
         piece:5,
         ingredients:[egg,milk,wheat,sugar],
+        weight:100,
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quae molestiae blanditiis autem quasi ducimus.",
         category: "Biscuits"
     },
@@ -69,6 +73,7 @@ const ProductsData=[
         price: 200,
         piece:2,
         ingredients:[egg,milk,sugar,choco,ice],
+        weight:1200,
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quae molestiae blanditiis autem quasi ducimus.",
         category: "Cakes"
     },
@@ -79,6 +84,7 @@ const ProductsData=[
         price: 200,
         piece:7,
         ingredients:[wheat,choco,sugar],
+        weight:null,
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quae molestiae blanditiis autem quasi ducimus.",
         category: "Others"
     },
@@ -89,6 +95,7 @@ const ProductsData=[
         price: 200,
         piece:10,
         ingredients:[egg,milk,sugar,wheat],
+        weight:null,
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quae molestiae blanditiis autem quasi ducimus.",
         category: "Cakes"
     },
@@ -99,6 +106,7 @@ const ProductsData=[
         price: 200,
         piece:null,
         ingredients:[egg,wheat,sugar],
+        weight:500,
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quae molestiae blanditiis autem quasi ducimus.",
         category: "Others"
     },
@@ -109,6 +117,7 @@ const ProductsData=[
         price: 100,
         piece:5,
         ingredients:[egg,milk,wheat,sugar],
+        weight:100,
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quae molestiae blanditiis autem quasi ducimus.",
         category: "Biscuits"
     },
@@ -119,6 +128,7 @@ const ProductsData=[
         price: 300,
         piece:null,
         ingredients:[egg,wheat,sugar,milk],
+        weight:null,
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quae molestiae blanditiis autem quasi ducimus.",
         category: "Breads"
     },
@@ -129,6 +139,7 @@ const ProductsData=[
         price: 50,
         piece:5,
         ingredients:[milk,choco,sugar],
+        weight:null,
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quae molestiae blanditiis autem quasi ducimus.",
         category: "Chocolates"
     },
@@ -139,6 +150,7 @@ const ProductsData=[
         price: 50,
         piece:5,
         ingredients:[milk,choco,sugar],
+        weight:null,
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quae molestiae blanditiis autem quasi ducimus.",
         category: "Chocolates"
     },
@@ -149,6 +161,7 @@ const ProductsData=[
         price: 200,
         piece:null,
         ingredients:[egg,wheat,sugar,milk],
+        weight:null,
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quae molestiae blanditiis autem quasi ducimus.",
         category: "Breads"
     },
@@ -159,6 +172,7 @@ const ProductsData=[
         price: 200,
         piece:null,
         ingredients:[egg,wheat,sugar,milk],
+        weight:null,
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quae molestiae blanditiis autem quasi ducimus.",
         category: "Breads"
     },
@@ -169,6 +183,7 @@ const ProductsData=[
         price:75,
         piece:7,
         ingredients:[egg,wheat,sugar,milk],
+        weight:100,
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quae molestiae blanditiis autem quasi ducimus.",
         category: "Biscuits"
     },
@@ -179,6 +194,7 @@ const ProductsData=[
         price: 100,
         piece:5,
         ingredients:[egg,wheat,sugar,milk],
+        weight:100,
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quae molestiae blanditiis autem quasi ducimus.",
         category: "Biscuits"
     },
@@ -189,6 +205,7 @@ const ProductsData=[
         price: 150,
         piece:3,
         ingredients:[sugar,milk,choco],
+        weight:null,
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quae molestiae blanditiis autem quasi ducimus.",
         category: "Chocolates"
     }
