@@ -40,10 +40,11 @@ export const Product = ({ setIsProductEdited, updateCurrentEditProduct, setIsAdd
                             <th className='py-3 text-sm'>IMAGE</th>
                             <th className='py-3 text-sm'>NAME</th>
                             <th className='py-3 text-sm'>PRICE</th>
-                            <th className='py-3 text-sm'>WEIGHT PER ITEM</th>
-                            <th className='py-3 text-sm'>NET QUANTITY</th>
+                            <th className='py-3 text-sm'>WEIGHT</th>
+                            <th className='py-3 text-sm'>QUANTITY PER ITEM</th>
                             <th className='py-3 text-sm'>CATEGORY</th>
                             <th className='py-3 text-sm'>DESCRIPTION</th>
+                            <th className='py-3 text-sm'>INGREDIENTS</th>
 
 
                             <th className='py-3 text-sm'>ACTION</th>
@@ -51,7 +52,7 @@ export const Product = ({ setIsProductEdited, updateCurrentEditProduct, setIsAdd
                     </thead>
                     <tbody className='text-center'>
                         {/* Pass setIsProductEdited to EachProduct component */}
-                        {productData.map((d) => <EachProduct key={d.id} productData={d} setIsProductEdited={setIsProductEdited} updateCurrentEditProduct={updateCurrentEditProduct} />)}
+                        {productData.map((d) => <EachProduct key={d.id} productData={d} setIsProductEdited={setIsProductEdited} setproductData={setproductData} updateCurrentEditProduct={updateCurrentEditProduct} />)}
                     </tbody>
                 </table>
             </div>

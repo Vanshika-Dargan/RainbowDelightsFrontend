@@ -64,14 +64,18 @@ body{
 }
 
 .product-table td{
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
     border-bottom: 1px solid #cbcbcd;
 }
 
 tr td img{
     width: 120px;
     object-fit: cover;
+}
+
+thead tr th{
+    padding-left: 15px;
 }
 
 .searchbox{
