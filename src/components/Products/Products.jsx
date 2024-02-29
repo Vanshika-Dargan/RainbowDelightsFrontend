@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Card from './Card/Card';
 import './Products.css';
-import ProductsData from '../../ProductsData';
+// import ProductsData from '../../ProductsData';
 import ModalPopup from '../ModalPopup/ModalPopup';
+import Axios  from '../../utils/Axios';
 
 const categories = ['All', 'Cakes', 'Biscuits', 'Breads', 'Chocolates', 'Others'];
 
@@ -10,6 +11,13 @@ const Products = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [productsData, setProductsData] = useState([])
+
+  useEffect(()=>{
+    Axios.get("product/products")
+        .then((res)=>setProductsData([...res.data]))
+        .catch((err)=>console.log(err))
+  },[])
 
   const handleCardClick = (product) => {
     setSelectedProduct(product);
@@ -20,7 +28,7 @@ const Products = () => {
     setSelectedCategory(category);
   };
 
-  const filteredProducts = selectedCategory === 'All' ? ProductsData : ProductsData.filter(product => product.category === selectedCategory);
+  const filteredProducts = selectedCategory === 'All' ? productsData : productsData.filter(product => product.category === selectedCategory);
 
   return (
     <div className="mb-10">
@@ -43,7 +51,7 @@ const Products = () => {
       <div className="flex flex-wrap justify-center gap-6">
         {filteredProducts.map((product) => (
           <div onClick={() => handleCardClick(product)} key={product.id}>
-            <Card name={product.name} price={product.price} img={product.img} />
+            <Card name={product.name} price={product.price} image={product.image} />
           </div>
         ))}
       </div>

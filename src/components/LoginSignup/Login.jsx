@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Axios from './../../utils/Axios';
 
 const Login = () => {
   // Initialize state for email and password
@@ -21,6 +22,13 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent default form submission
     console.log(`Email: ${formData.email}, Password: ${formData.password}`);
+    Axios.post('login', formData)
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
     // Here you can also implement login logic
   };
 

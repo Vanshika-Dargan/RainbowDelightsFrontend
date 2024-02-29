@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
-import BaseFlavour from '../../BaseFlavour';
-import Decoration from '../../Decoration';
-import Toppings from '../../Toppings';
-import Weight from '../../Weight';
+// import BaseFlavour from '../../BaseFlavour';
+// import Decoration from '../../Decoration';
+// import Toppings from '../../Toppings';
+// import Weight from '../../Weight';
 import cakeImage from '../../assets/cake.jpg';
 import './CakeCustomization.css';
+import Axios from './../../utils/Axios';
 
 function CakeCustomization() {
+  const [baseFlavour, setBaseFlavour] = useState([]);
+  const [decoration, setDecoration] = useState([]);
+  const [topping, setTopping] = useState([]);
+  const [weight,setWeight] = useState([]);
+
   const [selectedWeights, setSelectedWeights] = useState(new Set());
   const [selectedBaseFlavour, setSelectedBaseFlavour] = useState(null);
   const [selectedToppings, setSelectedToppings] = useState(new Set());
@@ -17,11 +23,31 @@ function CakeCustomization() {
   const [deliveryTime, setDeliveryTime] = useState('');
   const [estimatedPrice, setEstimatedPrice] = useState(0);
 
+  useEffect(()=>{
+    Axios.get("/product/getBaseFlavour")
+        .then((res)=>setBaseFlavour([...res.data]))
+        .catch((err)=>console.log(err.message))
+        
+    Axios.get("/product/getDecoration")
+        .then((res)=> setDecoration([...res.data]))
+        .catch((err)=>console.log(err.message))
+    
+        Axios.get("/product/getTopping")
+        .then((res)=> setTopping([...res.data]))
+        .catch((err)=>console.log(err.message))
+
+    Axios.get("/product/getWeight")
+        .then((res)=>{ 
+          console.log(res.data)
+          setWeight([...res.data])})
+        .catch((err)=>console.log(err.message))    
+  },[])
+
   useEffect(() => {
-    const priceWeights = Array.from(selectedWeights).reduce((acc, curr) => acc + Weight.find(w => w.id === curr).price, 0);
-    const priceFlavour = selectedBaseFlavour ? BaseFlavour.find(f => f.id === selectedBaseFlavour).price : 0;
-    const priceToppings = Array.from(selectedToppings).reduce((acc, curr) => acc + Toppings.find(t => t.id === curr).price, 0);
-    const priceDecorations = Array.from(selectedDecorations).reduce((acc, curr) => acc + Decoration.find(d => d.id === curr).price, 0);
+    const priceWeights = Array.from(selectedWeights).reduce((acc, curr) => acc + weight.find(w => w.id === curr).price, 0);
+    const priceFlavour = selectedBaseFlavour ? baseFlavour.find(f => f.id === selectedBaseFlavour).price : 0;
+    const priceToppings = Array.from(selectedToppings).reduce((acc, curr) => acc + topping.find(t => t.id === curr).price, 0);
+    const priceDecorations = Array.from(selectedDecorations).reduce((acc, curr) => acc + decoration.find(d => d.id === curr).price, 0);
     
     setEstimatedPrice(priceWeights + priceFlavour + priceToppings + priceDecorations);
   }, [selectedWeights, selectedBaseFlavour, selectedToppings, selectedDecorations]);
@@ -55,10 +81,10 @@ function CakeCustomization() {
         });
 
     console.log({
-      selectedWeights: Array.from(selectedWeights).map(id => `${Weight.find(w => w.id === id).size} kg`)[0],
-      selectedBaseFlavour: BaseFlavour.find(f => f.id === selectedBaseFlavour)?.name || "None",
-      selectedToppings: Array.from(selectedToppings).map(id => Toppings.find(t => t.id === id).name),
-      selectedDecorations: Array.from(selectedDecorations).map(id => Decoration.find(d => d.id === id).name),
+      selectedWeights: Array.from(selectedWeights).map(id => `${weight.find(w => w.id === id).size} kg`)[0],
+      selectedBaseFlavour: baseFlavour.find(f => f.id === selectedBaseFlavour)?.name || "None",
+      selectedToppings: Array.from(selectedToppings).map(id => topping.find(t => t.id === id).name),
+      selectedDecorations: Array.from(selectedDecorations).map(id => decoration.find(d => d.id === id).name),
       additionalNotes,
       deliveryDate,
       deliveryTime,
@@ -81,7 +107,7 @@ function CakeCustomization() {
         <div className="flex flex-col">
   <h2 className="text-2xl font-semibold pt-4 pb-1 px-2 text-font-color">Weight</h2>
   <div className="flex overflow-x-auto pb-4">
-    {Weight.map(weight => (
+    {weight.map(weight => (
       <label key={weight.id} className="flex flex-col items-center mx-2 px-10">
         <input
           type="radio"
@@ -112,7 +138,7 @@ function CakeCustomization() {
       <div className="flex flex-col">
   <h2 className="text-2xl font-semibold pt-4 pb-1 px-2 text-font-color">Base Flavour</h2>
   <div className="flex overflow-x-auto">
-    {BaseFlavour.map(flavour => (
+    {baseFlavour.map(flavour => (
       <label key={flavour.id} className="flex flex-col items-center mx-2 px-10">
         <input
           type="radio"
@@ -133,7 +159,7 @@ function CakeCustomization() {
 <div className="w-1/2 pr-2">
   <h2 className="text-2xl font-semibold pt-4 pb-1 px-2 text-font-color">Toppings</h2>
   <div className="overflow-y-auto" style={{ maxHeight: '200px' }}>
-    {Toppings.map(topping => (
+    {topping.map(topping => (
       <label key={topping.id} className="block mb-2">
         <input
           type="checkbox"
@@ -153,7 +179,7 @@ function CakeCustomization() {
 <div className="w-1/2 pl-2">
   <h2 className="text-2xl font-semibold pt-4 pb-1 px-2 text-font-color">Decorations</h2>
   <div className="overflow-y-auto" style={{ maxHeight: '200px' }}>
-    {Decoration.map(decoration => (
+    {decoration.map(decoration => (
       <label key={decoration.id} className="block mb-2">
         <input
           type="checkbox"

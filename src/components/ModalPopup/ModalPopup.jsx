@@ -29,7 +29,7 @@ const ModalPopup = ({ isOpen, onClose, product }) => {
       progress: undefined,
       });
     
-    updatedCart.push({ name: product.name, price: product.price, img: product.img, quantity: parseInt(quantity) });
+    updatedCart.push({ name: product.name, price: product.price, img: product.image, quantity: parseInt(quantity) });
     setcart(updatedCart);
     console.log(updatedCart);
     console.log(`Added ${quantity} of ${product.name} to cart.`);
@@ -57,7 +57,7 @@ const ModalPopup = ({ isOpen, onClose, product }) => {
       <div className="relative top-20 mx-auto p-5 border w-1/2 shadow-lg rounded-md bg-modal-color">
         <div className="flex">
           <div className="w-1/2">
-            <img src={product.img} alt={product.name} className="max-h-60 max-w-xs object-cover mx-auto" />
+            <img src={product.image} alt={product.name} className="max-h-60 max-w-xs object-cover mx-auto" />
           </div>
           <div className="w-1/2 p-4">
             {product.piece && product.weight && <h2 className="text-2xl font-extrabold colorname">{product.name} - {product.piece} pieces ({product.weight}g)</h2>}
