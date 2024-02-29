@@ -20,7 +20,7 @@ export default function Dashboard() {
                 <OperatorChat/>
             ) : (
                 isAddProductClicked ? (
-                    <AddProduct setIsAddProductClicked={setIsAddProductClicked} />
+                    <AddProduct  setIsAddProductClicked={setIsAddProductClicked} />
                 ) : isProductClicked ? (
                     isProductEdited ? <Edit_product currentEditProduct={currentEditProduct} setIsProductEdited={setIsProductEdited}  /> : <Product setIsProductEdited={setIsProductEdited} updateCurrentEditProduct={updateCurrentEditProduct} setIsAddProductClicked={setIsAddProductClicked} />
                 ) : (

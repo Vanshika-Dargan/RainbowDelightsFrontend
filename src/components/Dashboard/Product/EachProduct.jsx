@@ -26,8 +26,7 @@ export const EachProduct = ({ productData, setproductData, setIsProductEdited, u
             <td className=''>{productData.category}</td>
             <td className=''>{productData.description}</td>
             <td className=''>{productData.ingredients.map(p => {
-
-                return <span>{p} , </span>
+                return <span key={self.crypto.randomUUID()}>{p} , </span>
             })}</td>
             <td className=''>
                 <span className='text-cyan-800 cursor-pointer' onClick={() => { setIsProductEdited(true); updateCurrentEditProduct(productData); }}>Edit</span>&nbsp;&nbsp;&nbsp;<span onClick={handleDelete} className='text-red-700 cursor-pointer'>Delete</span></td>
