@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Axios from './../../utils/Axios';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const navigate = useNavigate();
   // Initialize state for email and password
   const [formData, setFormData] = useState({
     email: '',
@@ -22,9 +24,12 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent default form submission
     console.log(`Email: ${formData.email}, Password: ${formData.password}`);
-    Axios.post('login', formData)
+    Axios.post('api/login', formData,{
+      withCredentials: true}
+    )
     .then(function (response) {
       console.log(response);
+      navigate("/")
     })
     .catch(function (error) {
       console.log(error);

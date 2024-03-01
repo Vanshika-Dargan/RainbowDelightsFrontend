@@ -3,8 +3,10 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
 import Axios from '../../../utils/Axios';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     userName: '',
     email: '',
@@ -21,17 +23,18 @@ const Signup = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = function (e) {
     e.preventDefault();
     console.log(`userName: ${formData.userName}, Email: ${formData.email}, Password: ${formData.password}, userType: ${formData.userType}`);
-    Axios.post('signup', formData)
+    Axios.post('api/signup', formData)
     .then(function (response) {
+      toast("Account has been created!", { position: "top-center" });
       console.log(response);
+      navigate('/login');
     })
     .catch(function (error) {
       console.log(error);
     });
-    toast("Account has been created!", { position: "top-center" });
   };
 
   return (
