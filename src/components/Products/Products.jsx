@@ -14,6 +14,9 @@ const Products = () => {
   const [productsData, setProductsData] = useState([])
 
   useEffect(()=>{
+  //   ProductsData.map((create)=>{
+  //     Axios.post("product/add",create).then((res)=>console.log(res)).catch((err)=>console.log(err))
+  // })
     Axios.get("product/products")
         .then((res)=>setProductsData([...res.data]))
         .catch((err)=>console.log(err))
