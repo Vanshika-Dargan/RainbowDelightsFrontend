@@ -23,7 +23,7 @@ export const Edit_product = ({ currentEditProduct, setIsProductEdited }) => {
     function formatIngredients() {
         let str = "";
         productData.ingredients.forEach(d => {
-            str += d + ", ";
+            str += d + ",";
         })
         return str;
     }
@@ -47,7 +47,7 @@ export const Edit_product = ({ currentEditProduct, setIsProductEdited }) => {
         ing.forEach(el => formData.append("ingredients[]", el));
 
         const requestOptions = {
-            method: 'POST',
+            method: 'PUT',
             body: formData  // Use form data instead of JSON.stringify
         };
 

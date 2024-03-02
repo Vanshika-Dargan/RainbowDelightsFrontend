@@ -24,7 +24,7 @@ export const EachProduct = ({ productData, setproductData, setIsProductEdited, u
             <td className=''>{productData.weight}</td>
             <td className=''>{productData.quantityPerBox}</td>
             <td className=''>{productData.category}</td>
-            <td className=''>{productData.description}</td>
+            <td className='w-5'>{productData.description}</td>
             <td className=''>{productData.ingredients.map(p => {
                 return <span key={self.crypto.randomUUID()}>{p} , </span>
             })}</td>
