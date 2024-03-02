@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export const Edit_product = ({ currentEditProduct, setIsProductEdited }) => {
-    const { id, name, image, quantityPerBox, price, ingredients, description } = currentEditProduct;
+    const [productData, setProductData] = useState(currentEditProduct);
+    const [stringIngredients, setStringIngredients] = useState(formatIngredients());
+
+    let s = productData.image.split("\\");
     console.log(currentEditProduct);
-    const [newImg, setNewImg] = useState(image);
+    const [newImg, setNewImg] = useState(`http://localhost:5000/${s[0]}/${s[1]}`);
 
     // Function to handle image change
     const handleImageChange = (event) => {
@@ -16,6 +19,47 @@ export const Edit_product = ({ currentEditProduct, setIsProductEdited }) => {
             reader.readAsDataURL(file);
         }
     };
+
+    function formatIngredients() {
+        let str = "";
+        productData.ingredients.forEach(d => {
+            str += d + ", ";
+        })
+        return str;
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        console.log("editing post...");
+        setIsProductEdited(false);
+        const apiUrl = `http://localhost:5000/product/update/${productData.id}`;
+
+        // Prepare form data
+        const formData = new FormData();
+        formData.append('name', document.getElementById("product_name").value);
+        formData.append('quantityPerBox', document.getElementById("net_quantity").value);
+        formData.append('price', document.getElementById("cost_per_item").value);
+        formData.append('weight', document.getElementById("weight_per_item").value);
+        formData.append('category', document.getElementById("category").value);
+        formData.append('description', document.getElementById("description").value);
+        formData.append('image', document.getElementById("product_image").files[0]); // Append the file
+        let ing = document.getElementById("ingredients").value.split(',');
+        ing.forEach(el => formData.append("ingredients[]", el));
+
+        const requestOptions = {
+            method: 'POST',
+            body: formData  // Use form data instead of JSON.stringify
+        };
+
+        fetch(apiUrl, requestOptions).then(res => {
+            if (!res.ok) {
+                throw new Error('Network response was not ok');
+            }else setIsProductEdited(false);
+        }).catch((err) => {
+            console.log("error", err);
+        });
+    }
+
     return (
         <>
             <div className="min-h-screen flex justify-center items-center bg-gray-100 " style={{ width: "83%" }}>
@@ -28,37 +72,65 @@ export const Edit_product = ({ currentEditProduct, setIsProductEdited }) => {
                     <div className="md:flex">
                         <div className="w-full px-4 py-6">
                             <h2 className="text-center text-2xl font-bold mb-3">Product Profile</h2>
-                            <form>
+                            <form onSubmit={handleSubmit}>
                                 <div className="grid grid-cols-2 gap-4">
                                     <div className="mb-4">
                                         <label htmlFor="product_name" className="block text-gray-700 font-bold mb-2">Product Name</label>
-                                        <input type="text" id="product_name" name="name" className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
+                                        <input value={productData.name}
+                                            onChange={(e) => {
+                                                setProductData(prev => ({ ...prev, name: e.target.value }))
+                                            }}
+                                            type="text" id="product_name" name="name" className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
                                     </div>
 
                                     <div className="mb-4">
                                         <label htmlFor="net_quantity" className="block text-gray-700 font-bold mb-2">Quantity per box</label>
-                                        <input type="number" id="net_quantity" name="net_quantity" className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
+                                        <input value={productData.quantityPerBox}
+                                            onChange={(e) => {
+                                                setProductData(prev => ({ ...prev, quantityPerBox: e.target.value }))
+                                            }}
+                                            type="number" id="net_quantity" name="net_quantity" className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
                                     </div>
 
                                     <div className="mb-4">
                                         <label htmlFor="cost_per_item" className="block text-gray-700 font-bold mb-2">Price</label>
-                                        <input type="number" id="cost_per_item" name="cost_per_item" className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
+                                        <input value={productData.price}
+                                            onChange={(e) => {
+                                                setProductData(prev => ({ ...prev, price: e.target.value }))
+                                            }}
+                                            type="number" id="cost_per_item" name="cost_per_item" className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
                                     </div>
                                     <div className="mb-4">
                                         <label htmlFor="weight_per_item" className="block text-gray-700 font-bold mb-2">Weight</label>
-                                        <input type="number" id="weight_per_item" name="weight_per_item" className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
+                                        <input value={productData.weight}
+                                            onChange={(e) => {
+                                                setProductData(prev => ({ ...prev, weight: e.target.value }))
+                                            }}
+                                            type="number" id="weight_per_item" name="weight_per_item" className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
                                     </div>
                                     <div className="mb-4">
                                         <label htmlFor="category" className="block text-gray-700 font-bold mb-2">Category</label>
-                                        <input type="text" id="category" name="category" className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
+                                        <input value={productData.category}
+                                            onChange={(e) => {
+                                                setProductData(prev => ({ ...prev, category: e.target.value }))
+                                            }}
+                                            type="text" id="category" name="category" className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
                                     </div>
                                     <div className="mb-4">
                                         <label htmlFor="description" className="block text-gray-700 font-bold mb-2">Description</label>
-                                        <textarea id="description" name="description" className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"></textarea>
+                                        <textarea value={productData.description}
+                                            onChange={(e) => {
+                                                setProductData(prev => ({ ...prev, description: e.target.value }))
+                                            }}
+                                            id="description" name="description" className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"></textarea>
                                     </div>
                                     <div className="mb-4">
                                         <label htmlFor="ingredients" className="block text-gray-700 font-bold mb-2">Ingredients</label>
-                                        <textarea id="ingredients" name="ingredients" placeholder='Use comma seperation' className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"></textarea>
+                                        <textarea value={stringIngredients}
+                                            onChange={(e) => {
+                                                setStringIngredients(e.target.value);
+                                            }}
+                                            id="ingredients" name="ingredients" placeholder='Use comma seperation' className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"></textarea>
                                     </div>
                                 </div>
                                 <label htmlFor="product_image" className="block text-gray-700 font-bold mb-2 mr-2">Product Image</label>
