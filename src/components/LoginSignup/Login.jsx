@@ -38,38 +38,38 @@ const Login = () => {
   };
 
   return (
-    <div className="relative mx-auto w-full max-w-md bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:rounded-xl sm:px-10 mb-20 mt-20">
+    <div className="relative mx-auto bg-[#FFEBE2] w-full max-w-md px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:rounded-xl sm:px-10 mb-20 mt-20">
       <div className="w-full">
         <div className="text-center">
-          <h1 className="text-3xl font-semibold text-pink-900">Log In</h1>
-          <p className="mt-2 text-pink-900">Log In below to access your account</p>
+          <h1 className="text-3xl font-bold text-pink-900">Log In</h1>
+          <p className="mt-2 font-semibold text-pink-900">Log In below to access your account</p>
         </div>
         <div className="mt-5">
           <form onSubmit={handleSubmit}>
             <div className="relative mt-6">
+            <label htmlFor="email" className="block font-medium text-gray-700 focus:text-pink-900">Email</label>
               <input
                 type="email"
                 name="email"
                 id="email"
-                placeholder="Email Address"
-                className="peer mt-1 w-full border-b-2 border-gray-300 px-0 py-1 placeholder:text-transparent focus:border-pink-900 focus:outline-none"
+                className="peer mt-1 w-full bg-[#FFEBE2] border-b-2 border-[#F6D6D6] px-0 py-1 placeholder:text-transparent focus:border-pink-900 focus:outline-none"
                 autoComplete="off"
                 onChange={handleChange}
                 value={formData.email}
               />
-              <label htmlFor="email" className="pointer-events-none absolute top-0 left-0 origin-left -translate-y-1/2 transform text-sm text-gray-800 opacity-75 transition-all duration-100 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-pink-900 peer-focus:top-0 peer-focus:pl-0 peer-focus:text-sm peer-focus:text-pink-900">Email Address</label>
+            
             </div>
             <div className="relative mt-6">
+            <label htmlFor="password" className="block font-medium text-gray-700 focus:text-pink-900">Password</label>
               <input
                 type="password"
                 name="password"
                 id="password"
-                placeholder="Password"
-                className="peer mt-1 w-full border-b-2 border-gray-300 px-0 py-1 placeholder:text-transparent focus:border-pink-900 focus:outline-none"
+                className="peer mt-1 w-full bg-[#FFEBE2] border-b-2 border-[#F6D6D6] px-0 py-1 placeholder:text-transparent focus:border-pink-900 focus:outline-none"
                 onChange={handleChange}
                 value={formData.password}
               />
-              <label htmlFor="password" className="pointer-events-none absolute top-0 left-0 origin-left -translate-y-1/2 transform text-sm text-gray-800 opacity-75 transition-all duration-100 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-pink-900 peer-focus:top-0 peer-focus:pl-0 peer-focus:text-sm peer-focus:text-pink-900">Password</label>
+             
             </div>
             <div>
               <Link to='/profile' className="float-right text-pink-900 hover:underline focus:text-rose-800 focus:outline-none mt-5 mb-5 font-semibold">Forgot Password?</Link>
