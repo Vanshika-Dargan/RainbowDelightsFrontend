@@ -2,25 +2,38 @@ import React from 'react';
 import {GiShop} from "react-icons/gi";
 import {IoIosChatbubbles} from "react-icons/io";
 import {BsBoxArrowLeft} from "react-icons/bs";
-
+import Dashboard from '../Dashboard';
 const SidenavContext = ({setIsProductClicked,setIsChatboxClicked}) => {
 
 
     function handleLiMouseOver(e){
 
         let element = e.currentTarget;
-        element.style.backgroundColor='#374151';
+        element.style.backgroundColor='#742437';
+        element.style.color='white';
         element.style.borderRadius='5px';
         element.style.cursor='pointer';
         let svg = element.childNodes[0];
-        svg.style.color='white';
+        svg.style.color='#F6D6D6';
+    }
+
+    function ChatMouseOver(e){
+
+        let element = e.currentTarget;
+        element.style.backgroundColor='#F6D6D6';
+        element.style.color='white';
+        element.style.borderRadius='5px';
+        element.style.cursor='pointer';
+        let svg = element.childNodes[0];
+        svg.style.color='#742437';
     }
 
     function handleLiMouseLeave(e){
         let element = e.currentTarget;
-        element.style.backgroundColor='inherit';
+        element.style.backgroundColor='#F6D6D6';
+        element.style.color='#742437';
         let svg = element.childNodes[0];
-        svg.style.color='#9CA3AF';
+        svg.style.color='#742437';
     }
     return (
         <>
@@ -33,7 +46,7 @@ const SidenavContext = ({setIsProductClicked,setIsChatboxClicked}) => {
                                 <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
                             </svg>
                             <span className='ml-2'>Dashboard</span>
-
+                            
                         </div>
                     </li>
                     <li className='mb-1 text-lg'>
@@ -62,7 +75,7 @@ const SidenavContext = ({setIsProductClicked,setIsChatboxClicked}) => {
                         <div className='flex items-center p-2 ml-6 mr-2' onMouseOver={handleLiMouseOver} onMouseLeave={handleLiMouseLeave} onClick={()=>{setIsChatboxClicked(true);setIsProductClicked(false)}}>
                             <IoIosChatbubbles className='das-icons'/>
                             <span className='ml-2'>Chat</span>
-                            <span className='ml-auto mr-4 text-sm px-2 bg-cyan-800 rounded-full'>3</span>
+                            <span className='ml-auto mr-4 text-sm px-2 bg-[#742437] rounded-full text-white'>3</span>
                         </div>
                     </li>
                     <li className='mb-1 text-lg'>

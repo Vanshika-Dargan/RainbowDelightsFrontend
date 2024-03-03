@@ -2,9 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Kameron:wght@400..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@500;600;800&display=swap');
 
-body{
-    background-color: white;
-}
+
 
 .logo-font{
     font-family: 'Italianno', cursive;
@@ -26,11 +24,16 @@ body{
 
 
 .siderbar-color{
-    background-color: #2A3042;
-    color: white;
+    background-color: #F6D6D6;
+    color: #742437;
     min-height: 100vh;
     transition: 1s;
+    font-weight:bold;
 
+}
+
+.logo{
+    width:180px;
 }
 
 @media only screen and (max-width: 1300px) {

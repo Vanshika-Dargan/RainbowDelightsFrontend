@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import noimage from '../../../assets/Dashboard/img.png'
 
 const AddProduct = ({ setIsAddProductClicked }) => {

@@ -14,7 +14,7 @@ export default function Dashboard() {
     const [isChatboxClicked,setIsChatboxClicked]=useState(false);
 
     return (
-        <div className='flex'>
+        <div className='flex bg-white'>
             <Sidebar setIsProductClicked={setIsProductClicked} setIsChatboxClicked={setIsChatboxClicked}/>
             {isChatboxClicked ? (
                 <OperatorChat/>

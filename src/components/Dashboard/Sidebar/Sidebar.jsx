@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import "../Dashboard.css";
-
+import logo from '../../../assets/rainbow_delight.svg';
 import { ImParagraphLeft } from "react-icons/im";
 import SidenavContext from "./SidenavContext.jsx";
 
@@ -42,7 +42,7 @@ export const Sidebar = ({ setIsProductClicked ,setIsChatboxClicked }) => {
         <>
             <aside id='default-sidebar' className='sidenav_width top-0 left-0 z-40 siderbar-color overflow-auto'>
                 <div className='logo-font flex'>
-                    <div id={"logo"}>Rainbow delights</div>
+                    <img className="logo m-5" src={logo}/>
                     <div onClick={close_sidebar} className={"close_icon"}><ImParagraphLeft  style={{fontSize:"20px"}}/></div>
                 </div>
                 {sidenavStatus ?(
