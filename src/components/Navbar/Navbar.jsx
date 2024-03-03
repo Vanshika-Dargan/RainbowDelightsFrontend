@@ -30,9 +30,11 @@ export default function Navbar() {
     return (
         <nav className="bg-color shadow-md">
             <div className="max-w-7xl mx-auto px-4">
-                <div className="flex justify-between items-center py-3">
-                    <Link to="/" className="flex items-center">
-                        <img src={logo} alt="" className="cursor-pointer logo" />
+                <div className="flex justify-between items-center py-3 ">
+                    <Link to="/" className="flex items-center ">
+                        <div className="mx-10">
+                        <img src={logo} alt="" className="cursor-pointer logo " />
+                        </div>
                         {/* <span className="text-5xl cursor-pointer logo-font font-color">Rainbow Delights</span> */}
                     </Link>
 

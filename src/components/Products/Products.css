@@ -1,3 +1,14 @@
 .colortext{
     color: #742437;
 }
+
+.unselected{
+    background-color:#742437 !important;
+    
+}
+
+.selected{
+    background-color:#F6D6D6 !important;
+    color:#742437 !important;
+    font-weight:bold !important;
+}

@@ -43,7 +43,7 @@ const Products = () => {
           <button
             key={category}
             onClick={() => handleCategoryClick(category)}
-            className={`px-4 py-2 rounded-full text-white font-medium ${selectedCategory === category ? 'bg-red-500' : 'bg-gray-500'}`}
+            className={`px-4 py-2 rounded-full text-white font-medium ${selectedCategory === category ? 'selected' : 'unselected'}`}
           >
             {category}
           </button>
