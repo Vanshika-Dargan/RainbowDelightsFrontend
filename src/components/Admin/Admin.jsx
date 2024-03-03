@@ -1,8 +1,11 @@
 import React from 'react'
+import Dashboard from '../Dashboard/Dashboard'
 
 const Admin = () => {
   return (
-    <div>Admin</div>
+    <>
+      <Dashboard/>
+    </>
   )
 }
 

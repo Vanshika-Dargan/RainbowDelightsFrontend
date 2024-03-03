@@ -6,22 +6,8 @@ import IceCake from "./assets/Products/icecream_cake.jpg";
 import Pie from "./assets/Products/pie.jpg";
 import CupCake from "./assets/Products/cupcakes.jpg";
 import Eclairs from "./assets/Products/eclairs.jpg";
-import butter_cookie from "./assets/Products/butter_cookies.jpg";
-import cheese_bread from "./assets/Products/cheese_bread.jpg";
-import choco_balls from "./assets/Products/choco_balls.jpg";
-import chocolate from "./assets/Products/chocolate.jpg";
-import fruit_bread from "./assets/Products/fruit_bread.jpg";
-import garlic_bread from "./assets/Products/garlic_bread.jpg";
-import jam_cookies from "./assets/Products/jam_cookies.jpg";
-import rainbow_cookies from "./assets/Products/rainbow_cookies.jpg";
-import white_chocolate from "./assets/Products/white_choco.jpg";
-import egg from "./assets/egg-svgrepo-com.svg";
-import milk from "./assets/milk-bottle-svgrepo-com.svg";
-import wheat from "./assets/wheat-svgrepo-com.svg";
-import sugar from "./assets/sugar-svgrepo-com.svg";
-import choco from "./assets/chocolate-svgrepo-com.svg";
-import ice from "./assets/icecream2-svgrepo-com.svg";
 const ProductsData=[
+
     {
         id: 1,
         name: "Birthday Cakes",

@@ -12,29 +12,36 @@ import Login from './components/LoginSignup/Login';
 import Signup from './components/LoginSignup/Signup/Signup';
 import Orders from './components/Orders/Orders';
 import Admin from './components/Admin/Admin';
+import Chatbox from "./components/Chatbox/Chatbox.jsx";
 import CakeCustomization from './components/CakeCustomization/CakeCustomization';
 
 function App() {
   return (
+    <>
       <Router>
-        <Navbar />
         <Routes>
-          <Route path="/customize" element={<CakeCustomization />} />
-          <Route path="/cart" element={<ShoppingCart />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/orders" element={<Orders />} />
+          <Route path="/customize" element={<><Navbar /><CakeCustomization /><Footer /></>} />
+          <Route path="/cart" element={<><Navbar /><ShoppingCart /><Footer /></>} />
+          <Route path="/login" element={<><Login /></>} />
+          {/* <Route path="/profile" element={<><Navbar /><Profile /><Footer /></>} /> */}
+          <Route path="/orders" element={<><Navbar /><Orders /> <Footer /></>} />
           <Route path="/admin" element={<Admin />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/signup" element={<><Signup /></>} />
           <Route path="/" element = {
             <>
+
+              <Chatbox />
+              <Navbar />
               <Landing />
               <Products />
               <Slider />
+              <Footer />
             </>
           } />
         </Routes>
-        <Footer />
+        
       </Router>
+      </>
   );
 }
 
