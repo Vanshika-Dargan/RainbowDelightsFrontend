@@ -46,7 +46,7 @@ const Signup = () => {
       </div>
       <form onSubmit={handleSubmit}>
         <div className="mt-4">
-          <label htmlFor="userName" className="block font-medium text-gray-700 focus:text-pink-900">userName</label>
+          <label htmlFor="userName" className="block font-medium text-gray-700 focus:text-pink-900">Name</label>
           <input
             type="text"
             name="userName"

@@ -3,6 +3,7 @@ import { FaSearch, FaUserCircle, FaShoppingCart } from 'react-icons/fa';
 import { PiCakeDuotone } from "react-icons/pi";
 import { IoIosColorWand } from "react-icons/io";
 import { Link } from 'react-router-dom';
+import logo from "../../assets/rainbow_delight.svg"
 import './Navbar.css';
 
 export default function Navbar() {
@@ -31,7 +32,8 @@ export default function Navbar() {
             <div className="max-w-7xl mx-auto px-4">
                 <div className="flex justify-between items-center py-3">
                     <Link to="/" className="flex items-center">
-                        <span className="text-5xl cursor-pointer logo-font font-color">Rainbow Delights</span>
+                        <img src={logo} alt="" className="cursor-pointer logo" />
+                        {/* <span className="text-5xl cursor-pointer logo-font font-color">Rainbow Delights</span> */}
                     </Link>
 
                     <div className="flex justify-center items-center relative w-full max-w-xs">
