@@ -9,3 +9,8 @@
 .colorname {
     color: #6D313F;
 }
+
+.toast-color {
+    background: #da8499 !important;
+    border: 2px solid #742437 !important;
+  }

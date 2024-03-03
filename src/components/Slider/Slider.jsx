@@ -9,7 +9,7 @@ import { Navigation } from 'swiper/modules';
 
 import './Slider.css';
 
-import sliderImg from '../../assets/cake3.png';
+import sliderImg from '../../assets/cake2.png';
 
 export default function App() {
   const slides = [

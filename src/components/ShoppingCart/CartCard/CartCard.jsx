@@ -1,0 +1,54 @@
+// CartCard.jsx
+import React, { useState } from 'react';
+import './CartCard.css';
+
+const CartCard = ({ product }) => {
+  // Set initial state for quantity from the product prop
+  const [quantity, setQuantity] = useState(product.quantity);
+
+  // Function to handle incrementing the quantity
+  const incrementQuantity = () => {
+    setQuantity(prevQuantity => prevQuantity + 1);
+  };
+
+  // Function to handle decrementing the quantity
+  const decrementQuantity = () => {
+    if (quantity > 1) { // Prevents quantity from going below 1
+      setQuantity(prevQuantity => prevQuantity - 1);
+    }
+  };
+
+  // Calculate the subtotal
+  const subtotal = quantity * product.price;
+
+  return (
+    <div className="flex justify-between items-center bg-card-color p-4 shadow rounded-lg mb-3">
+      {/* Product Image */}
+      <img src={product.img} alt={product.name} className="w-16 h-16 rounded-full" />
+
+      {/* Product Details */}
+      <div className="flex flex-col ml-4">
+        <span className="text-lg font-medium">{product.name}</span>
+        {product.piece && <span className="text-sm">Quantity: {product.piece} piece</span>}
+        <span className="text-sm">Price: ${product.price.toFixed(2)}</span>
+      </div>
+
+      {/* Quantity Selector */}
+      <div className="flex items-center border rounded">
+        <button className="px-3 border-r text-lg bg-white" onClick={decrementQuantity}>-</button>
+        <input type="text" value={quantity} className="w-12 text-center" readOnly />
+        <button className="px-3 border-l text-lg bg-white" onClick={incrementQuantity}>+</button>
+      </div>
+
+      {/* Subtotal */}
+      <div>
+        <span className="text-lg">${subtotal.toFixed(2)}</span>
+      </div>
+
+      {/* Remove Button */}
+      <button className="text-2xl text-red-500 hover:text-red-700">&times;</button>
+    </div>
+  );
+};
+
+export default CartCard;
