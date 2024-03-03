@@ -151,7 +151,7 @@ const OperatorChat = () => {
         const requestData = {
             userName: username,
             operator: operator_name,
-            user_type: "operator",
+            userType: "operator",
             message: document.getElementById("message_text").value
         };
         const requestOptions = {

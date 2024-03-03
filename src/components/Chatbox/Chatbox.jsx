@@ -172,7 +172,7 @@ const Chatbox = () => {
         const requestData = {
             userName: username,
             operator: operator_name,
-            user_type: "user",
+            userType: "user",
             message: document.getElementById("message_text").value
         };
         const requestOptions = {
