@@ -6,3 +6,17 @@ body {
     background-color: #FFF8E3;
     font-family: 'Abhaya Libre', serif;
 }
+
+html::-webkit-scrollbar {
+    height: 8px; /* Adjust the width as needed */
+  }
+  
+html::-webkit-scrollbar {
+    width: 8px; 
+  /* Adjust the width as needed */
+  }
+  
+html::-webkit-scrollbar-thumb {
+    background-color: #742437; /* Adjust the color of the scrollbar thumb */
+    border-radius: 4px;
+  }

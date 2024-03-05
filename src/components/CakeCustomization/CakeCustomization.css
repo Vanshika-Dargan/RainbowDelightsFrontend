@@ -6,3 +6,20 @@
   background: #da8499 !important;
   border: 2px solid #742437 !important;
 }
+/* Custom CSS for scrollbar colors */
+div.overflow-x-scroll::-webkit-scrollbar {
+  height: 8px; /* Adjust the width as needed */
+}
+
+div.overflow-y-auto::-webkit-scrollbar {
+  width: 8px; 
+/* Adjust the width as needed */
+}
+
+div::-webkit-scrollbar-thumb {
+  background-color: #fecaca; /* Adjust the color of the scrollbar thumb */
+  border-radius: 8px; /* Adjust the border radius as needed */
+}
+
+/* ::-webkit-scrollbar-track {
+  background-color: ; /* Adjust the color of the scrollbar track } */
