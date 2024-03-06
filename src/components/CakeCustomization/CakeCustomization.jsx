@@ -8,6 +8,7 @@ import cakeImage from '../../assets/cake.jpg';
 import './CakeCustomization.css';
 import Axios from './../../utils/Axios';
 
+
 function CakeCustomization() {
   const [baseFlavour, setBaseFlavour] = useState([]);
   const [decoration, setDecoration] = useState([]);
@@ -24,6 +25,7 @@ function CakeCustomization() {
   const [estimatedPrice, setEstimatedPrice] = useState(0);
 
   useEffect(()=>{
+
     Axios.get("/product/getBaseFlavour")
         .then((res)=>setBaseFlavour([...res.data]))
         .catch((err)=>console.log(err.message))
@@ -129,7 +131,7 @@ function CakeCustomization() {
     placeholder="Need something more?"
     value={additionalNotes}
     onChange={e => setAdditionalNotes(e.target.value)}
-    className="w-full p-2 border border-gray-300 rounded"
+    className="w-full p-2 border-2 border-red-900 rounded"
     rows="4"
   />
 </div>
@@ -137,7 +139,7 @@ function CakeCustomization() {
       <div className="w-1/2 p-4">
       <div className="flex flex-col">
   <h2 className="text-2xl font-semibold pt-4 pb-1 px-2 text-font-color">Base Flavour</h2>
-  <div className="flex overflow-x-auto">
+  <div className="flex overflow-x-scroll">
     {baseFlavour.map(flavour => (
       <label key={flavour.id} className="flex flex-col items-center mx-2 px-10">
         <input
@@ -158,7 +160,7 @@ function CakeCustomization() {
 <div className="flex justify-between">
 <div className="w-1/2 pr-2">
   <h2 className="text-2xl font-semibold pt-4 pb-1 px-2 text-font-color">Toppings</h2>
-  <div className="overflow-y-auto" style={{ maxHeight: '200px' }}>
+  <div className="overflow-y-auto " style={{ maxHeight: '200px' }}>
     {topping.map(topping => (
       <label key={topping.id} className="block mb-2">
         <input
@@ -208,7 +210,7 @@ function CakeCustomization() {
   className="border border-gray-300 rounded py-1 px-5"
 />
 
-    <select
+  <select
   value={deliveryTime}
   onChange={e => setDeliveryTime(e.target.value)}
   className="border border-gray-300 rounded py-1 px-5"
