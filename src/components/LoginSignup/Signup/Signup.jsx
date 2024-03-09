@@ -4,6 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
 import Axios from '../../../utils/Axios';
 import { useNavigate } from 'react-router-dom';
+import logo from "../../../assets/rainbow_delight.svg";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -13,7 +14,6 @@ const Signup = () => {
     password: '',
     userType: 'client'
   });
-
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -38,6 +38,20 @@ const Signup = () => {
   };
 
   return (
+    <>
+    <nav className="bg-color shadow-md">
+            <div className="max-w-7xl mx-auto px-4">
+                <div className="flex justify-between items-center py-4 ">
+                    <Link to="/" className="flex items-center ">
+                        <div className="mx-10">
+                        <img src={logo} alt="" className="cursor-pointer logo " />
+                        </div>
+                        {/* <span className="text-5xl cursor-pointer logo-font font-color">Rainbow Delights</span> */}
+                    </Link>
+                </div>
+            </div>
+    </nav>
+
     <div className="relative mx-auto w-full max-w-md bg-[#FFEBE2] px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:rounded-xl sm:px-10 mb-20 mt-20">
       <ToastContainer />
       <div className="text-center mb-4">
@@ -97,6 +111,7 @@ const Signup = () => {
         </p>
       </form>
     </div>
+    </>
   );
 };
 
