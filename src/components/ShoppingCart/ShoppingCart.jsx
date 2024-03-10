@@ -1,16 +1,48 @@
 // ShoppingCart.jsx
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import CartCard from './CartCard/CartCard';
 import ProductsData from '../../CartProductsData';
 import './ShoppingCart.css';
 
 const ShoppingCart = () => {
+  const [products, setProducts] = useState(ProductsData);
+
+  // Function to update quantity of a product
+  const updateQuantity = (productId, newQuantity) => {
+    const updatedProducts = products.map(product => {
+      if (product.id === productId) {
+        return { ...product, quantity: newQuantity };
+      }
+      return product;
+    });
+    setProducts(updatedProducts);
+  };
+
+  // Function to remove a product from cart
+  const removeFromCart = (productId) => {
+    const updatedProducts = products.filter(product => product.id !== productId);
+    setProducts(updatedProducts);
+  };
+
+  // Calculate grand total
+  const grandTotal = products.reduce((accumulator, product) => {
+    return accumulator + (product.quantity * product.price);
+  }, 0);
+
   return (
     <div className="container mx-auto p-6">
       <div className="text-5xl font-medium mb-4 text-color">Your Cart</div>
-      {ProductsData.map(product => (
-        <CartCard key={product.id} product={product} />
+      {products.map(product => (
+        <CartCard 
+          key={product.id} 
+          product={product} 
+          updateQuantity={updateQuantity} 
+          removeFromCart={removeFromCart} 
+        />
       ))}
+      <div className="text-2xl font-semibold mt-4 flex justify-end">
+        Grand Total: ${grandTotal.toFixed(2)}
+      </div>
     </div>
   );
 };
