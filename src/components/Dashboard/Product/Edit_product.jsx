@@ -117,14 +117,6 @@ export const Edit_product = ({ currentEditProduct, setIsProductEdited }) => {
                                             type="text" id="category" name="category" className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
                                     </div>
                                     <div className="mb-4">
-                                        <label htmlFor="description" className="block text-gray-700 font-bold mb-2">Description</label>
-                                        <textarea value={productData.description}
-                                            onChange={(e) => {
-                                                setProductData(prev => ({ ...prev, description: e.target.value }))
-                                            }}
-                                            id="description" name="description" className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"></textarea>
-                                    </div>
-                                    <div className="mb-4">
                                         <label htmlFor="ingredients" className="block text-gray-700 font-bold mb-2">Ingredients</label>
                                         <textarea value={stringIngredients}
                                             onChange={(e) => {
@@ -132,6 +124,14 @@ export const Edit_product = ({ currentEditProduct, setIsProductEdited }) => {
                                             }}
                                             id="ingredients" name="ingredients" placeholder='Use comma seperation' className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"></textarea>
                                     </div>
+                                </div>
+                                <div className="mb-4">
+                                    <label htmlFor="description" className="block text-gray-700 font-bold mb-2">Description</label>
+                                    <textarea value={productData.description}
+                                        onChange={(e) => {
+                                            setProductData(prev => ({ ...prev, description: e.target.value }))
+                                        }}
+                                        id="description" name="description" className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"></textarea>
                                 </div>
                                 <label htmlFor="product_image" className="block text-gray-700 font-bold mb-2 mr-2">Product Image</label>
                                 <div className="mb-4 flex items-center">

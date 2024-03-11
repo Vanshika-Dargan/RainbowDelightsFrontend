@@ -36,7 +36,6 @@ export const Product = ({ setIsProductEdited, updateCurrentEditProduct, setIsAdd
                 <table className='text-gray-950 w-full'>
                     <thead className=''>
                         <tr>
-                            <th className='py-3 text-sm'>PRODUCT ID</th>
                             <th className='py-3 text-sm'>IMAGE</th>
                             <th className='py-3 text-sm'>NAME</th>
                             <th className='py-3 text-sm'>PRICE</th>
