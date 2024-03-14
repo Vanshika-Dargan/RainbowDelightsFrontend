@@ -7,7 +7,7 @@ import Axios  from '../../utils/Axios';
 
 const categories = ['All', 'Cakes', 'Biscuits', 'Breads', 'Chocolates', 'Others'];
 
-const Products = ({addToCart}) => {
+const Products = ({addToCart,changeCount}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -60,7 +60,8 @@ const Products = ({addToCart}) => {
       </div>
 
       {/* Modal Popup */}
-      <ModalPopup isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} product={selectedProduct} addToCart={addToCart} />
+      <ModalPopup isOpen={isModalOpen} onClose={() => {setIsModalOpen(false) 
+        setSelectedProduct(null) }} product={selectedProduct} addToCart={addToCart} changeCount={changeCount}/>
     </div>
   );
 };

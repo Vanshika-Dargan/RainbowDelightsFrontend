@@ -13,19 +13,19 @@ import WheatIcon from "../../assets/wheat-svgrepo-com.svg";
 import Axios from "../../utils/Axios"
 import Cookies from 'js-cookie';
 
-const ModalPopup = ({ isOpen, onClose, product,addToCart }) => {
+const ModalPopup = ({ isOpen, onClose, product,addToCart,changeCount }) => {
   const [quantity, setQuantity] = useState(1);
   if (!isOpen || !product) return null;
 
   const handleAddToCart = () => { 
     const token = Cookies.get("jwt")
-    console.log(token)
     if(!token){
       addToCart({...product,quantity})
     }else{
       Axios.post("cart/addCart",{productId:product.id,quantity:quantity},{
-        withCredentials: true}).
-        catch((err)=>console.log(err)) 
+        withCredentials: true})
+        .then((res)=>changeCount(res.data.count))
+        .catch((err)=>console.log(err)) 
     }
     toast.success('Added to Cart!', {
       className: "toast-color",

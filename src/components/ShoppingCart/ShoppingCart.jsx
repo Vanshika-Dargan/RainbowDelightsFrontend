@@ -6,23 +6,23 @@ import './ShoppingCart.css';
 import Axios from "../../utils/Axios"
 import Cookies from 'js-cookie';
 
-const ShoppingCart = ({addToCart}) => {
+const ShoppingCart = ({addToCart, changeAddToCart, changeCount}) => {
   const [products, setProducts] = useState([]);
 
   useEffect(()=>{
     const token = Cookies.get("jwt")
     if(!token){
-      setProducts([...addToCart])
+      setProducts(prev=> [...addToCart])
     }else{
       Axios.get("cart/getCart",{
         withCredentials: true})
         .then((res)=>{
-          // console.log(res)
-          setProducts([...res.data])
+          changeCount(res.data.count)
+          setProducts([...res.data.dataSet])
         })
     }
   },[])
-
+  
   // Function to update quantity of a product
   const updateQuantity = (productId, newQuantity) => {
     const updatedProducts = products.map(product => {
@@ -31,13 +31,25 @@ const ShoppingCart = ({addToCart}) => {
       }
       return product;
     });
-    setProducts(updatedProducts);
+    setProducts([...updatedProducts]);
   };
 
   // Function to remove a product from cart
   const removeFromCart = (productId) => {
-    const updatedProducts = products.filter(product => product.id !== productId);
-    setProducts(updatedProducts);
+    const token = Cookies.get("jwt")
+    if(!token){
+      const updatedProducts = products.filter(product => product.id !== productId);
+      setProducts([...updatedProducts]);   
+      changeAddToCart(updatedProducts)
+    }else{
+      Axios.delete("cart/deleteCart?productId="+productId,{
+        withCredentials: true})
+        .then((res)=>{
+          const updatedProducts = products.filter(product => product.id !== productId);
+          changeCount(res.data.count)
+          setProducts([...updatedProducts]);
+        })
+    }
   };
 
   // Calculate grand total
