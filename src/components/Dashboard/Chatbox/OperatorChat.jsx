@@ -5,7 +5,7 @@ import $ from 'jquery';
 import { IoMdAlert } from "react-icons/io";
 
 
-const operator_name="operator_1"
+const operator_name="admin"
 const OperatorChat = () => {
     // const messages = [
     //     { id: 1, text: "Hello!", sender: "user" },
@@ -25,7 +25,7 @@ const OperatorChat = () => {
     const fetchclient_count = async () => {
         try {
             const response = await $.ajax({
-                url: 'http://localhost:5000/chat/get_client_count',
+                url: 'http://127.0.0.1:5000/chat/get_client_count',
                 method: 'GET',
                 dataType: 'json',
             });
@@ -54,7 +54,7 @@ const OperatorChat = () => {
     const search_connection = async () => {
         try {
             const response = await $.ajax({
-                url: 'http://localhost:5000/chat/search_connection/' + operator_name,
+                url: 'http://127.0.0.1:5000/chat/search_connection/' + operator_name,
                 method: 'GET',
                 dataType: 'json',
             })
@@ -79,7 +79,7 @@ const OperatorChat = () => {
 
     const get_client = async () => {
         try {
-            const apiUrl = "http://localhost:5000/chat/get_client/" + operator_name;
+            const apiUrl = "http://127.0.0.1:5000/chat/get_client/" + operator_name;
             const response = await fetch(apiUrl);
 
             if (!response.ok) {
@@ -104,7 +104,7 @@ const OperatorChat = () => {
 
     function close_conversation(){
 
-        const apiUrl="http://localhost:5000/chat/close_conversation/"+operator_name;
+        const apiUrl="http://127.0.0.1:5000/chat/close_conversation/"+operator_name;
         fetch(apiUrl)
             .then(data => {
 
@@ -123,7 +123,7 @@ const OperatorChat = () => {
     const fetchmessages = async () => {
         let username = document.getElementById("username").innerText;
         try {
-            const response = await fetch(`http://localhost:5000/chat/get_messages/${username}/${operator_name}`);
+            const response = await fetch(`http://127.0.0.1:5000/chat/get_messages/${username}/${operator_name}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch messages');
             }
@@ -147,7 +147,7 @@ const OperatorChat = () => {
         const username = document.getElementById("username").innerText;
         console.log(username)
 
-        const apiUrl = "http://localhost:5000/chat/send_message";
+        const apiUrl = "http://127.0.0.1:5000/chat/send_message";
         const requestData = {
             userName: username,
             operator: operator_name,

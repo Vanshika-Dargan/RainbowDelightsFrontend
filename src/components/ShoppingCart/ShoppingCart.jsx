@@ -3,9 +3,25 @@ import React, { useState, useEffect } from 'react';
 import CartCard from './CartCard/CartCard';
 import ProductsData from '../../CartProductsData';
 import './ShoppingCart.css';
+import Axios from "../../utils/Axios"
+import Cookies from 'js-cookie';
 
-const ShoppingCart = () => {
-  const [products, setProducts] = useState(ProductsData);
+const ShoppingCart = ({addToCart}) => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(()=>{
+    const token = Cookies.get("jwt")
+    if(!token){
+      setProducts([...addToCart])
+    }else{
+      Axios.get("cart/getCart",{
+        withCredentials: true})
+        .then((res)=>{
+          // console.log(res)
+          setProducts([...res.data])
+        })
+    }
+  },[])
 
   // Function to update quantity of a product
   const updateQuantity = (productId, newQuantity) => {
@@ -32,14 +48,17 @@ const ShoppingCart = () => {
   return (
     <div className="container mx-auto p-6">
       <div className="text-5xl font-medium mb-4 text-color">Your Cart</div>
-      {products.map(product => (
-        <CartCard 
-          key={product.id} 
-          product={product} 
-          updateQuantity={updateQuantity} 
-          removeFromCart={removeFromCart} 
-        />
-      ))}
+      {
+        products.length==0?<p className='text-center text-slate-500'>No product is available</p>:
+        products.map(product => (
+          <CartCard 
+            key={product.id} 
+            product={product} 
+            updateQuantity={updateQuantity} 
+            removeFromCart={removeFromCart} 
+          />
+        ))
+      }
       <div className="text-2xl font-semibold mt-4 flex justify-end">
         Grand Total: ${grandTotal.toFixed(2)}
       </div>

@@ -1,5 +1,5 @@
 // App.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
@@ -16,13 +16,20 @@ import Chatbox from "./components/Chatbox/Chatbox.jsx";
 import CakeCustomization from './components/CakeCustomization/CakeCustomization';
 
 function App() {
+  const [addToCart,setAddToCart] = useState([]);
+
+
+  const changeAddToCart = (data)=>{
+    setAddToCart(prev => [...prev,{...data}])
+  }
+
   return (
     <>
       <Router>
         <Routes>
           <Route path="/customize" element={<><Navbar /><CakeCustomization /><Footer /></>} />
-          <Route path="/cart" element={<><Navbar /><ShoppingCart /><Footer /></>} />
-          <Route path="/login" element={<><Login /></>} />
+          <Route path="/cart" element={<><Navbar /><ShoppingCart addToCart={addToCart} /><Footer /></>} />
+          <Route path="/login" element={<><Login/></>} />
           {/* <Route path="/profile" element={<><Navbar /><Profile /><Footer /></>} /> */}
           <Route path="/orders" element={<><Navbar /><Orders /> <Footer /></>} />
           <Route path="/admin" element={<Admin />} />
@@ -33,7 +40,7 @@ function App() {
               <Chatbox />
               <Navbar />
               <Landing />
-              <Products />
+              <Products addToCart={changeAddToCart} />
               <Slider />
               <Footer />
             </>

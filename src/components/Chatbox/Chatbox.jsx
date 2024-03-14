@@ -9,7 +9,7 @@ import spinner from '../../assets/Chatbox/Spinner.gif'
 
 
 
-const username="vikram";
+const username="dinesh";
 
 
 
@@ -51,7 +51,7 @@ const Chatbox = () => {
     const fetchqueue = async () => {
         try {
             const response = await $.ajax({
-                url: 'http://localhost:5000/chat/checkqueue/' + username,
+                url: 'http://127.0.0.1:5000/chat/checkqueue/' + username,
                 method: 'GET',
                 dataType: 'json',
             });
@@ -83,7 +83,7 @@ const Chatbox = () => {
     async function request_operator() {
         updateisRequested(true);
 
-        const apiUrl = "http://localhost:5000/chat/addtoqueue/" + username;
+        const apiUrl = "http://127.0.0.1:5000/chat/addtoqueue/" + username;
         try {
             const response = await $.ajax({
                 url: apiUrl,
@@ -99,7 +99,7 @@ const Chatbox = () => {
     const user_assign_status = async () => {
         try {
             const response = await $.ajax({
-                url: 'http://localhost:5000/chat/search_operator/' + username,
+                url: 'http://127.0.0.1:5000/chat/search_operator/' + username,
                 method: 'GET',
                 dataType: 'json',
             });
@@ -145,7 +145,7 @@ const Chatbox = () => {
     const fetchmessages = async () => {
         try {
             let operator_name=document.getElementById("operator_name").innerText;
-            const response = await fetch(`http://localhost:5000/chat/get_messages/${username}/${operator_name}`);
+            const response = await fetch(`http://127.0.0.1:5000/chat/get_messages/${username}/${operator_name}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch messages');
             }
@@ -168,7 +168,7 @@ const Chatbox = () => {
         e.preventDefault();
         let operator_name=document.getElementById("operator_name").innerText;
 
-        const apiUrl = "http://localhost:5000/chat/send_message";
+        const apiUrl = "http://127.0.0.1:5000/chat/send_message";
         const requestData = {
             userName: username,
             operator: operator_name,

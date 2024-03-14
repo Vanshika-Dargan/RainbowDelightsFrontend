@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Axios from './../../utils/Axios';
 import { useNavigate } from 'react-router-dom';
 import logo from "../../assets/rainbow_delight.svg";
+import Cookies from 'js-cookie';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ const Login = () => {
       withCredentials: true}
     )
     .then(function (response) {
-      console.log(response);
+      Cookies.set('jwt', response.data.data.jwt, { expires: 1 });
       navigate("/")
     })
     .catch(function (error) {

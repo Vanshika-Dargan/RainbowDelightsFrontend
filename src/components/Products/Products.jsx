@@ -7,7 +7,7 @@ import Axios  from '../../utils/Axios';
 
 const categories = ['All', 'Cakes', 'Biscuits', 'Breads', 'Chocolates', 'Others'];
 
-const Products = () => {
+const Products = ({addToCart}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -54,13 +54,13 @@ const Products = () => {
       <div className="flex flex-wrap justify-center gap-6">
         {filteredProducts.map((product) => (
           <div onClick={() => handleCardClick(product)} key={product.id}>
-            <Card name={product.name} price={product.price} image={product.image} />
+            <Card name={product.name} price={product.price} image={product.image}/>
           </div>
         ))}
       </div>
 
       {/* Modal Popup */}
-      <ModalPopup isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} product={selectedProduct} />
+      <ModalPopup isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} product={selectedProduct} addToCart={addToCart} />
     </div>
   );
 };

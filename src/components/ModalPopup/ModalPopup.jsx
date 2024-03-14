@@ -10,14 +10,23 @@ import ChocolateIcon from "../../assets/chocolate-svgrepo-com.svg";
 import MilkIcon from "../../assets/milk-bottle-svgrepo-com.svg";
 import SugarIcon from "../../assets/sugar-svgrepo-com.svg";
 import WheatIcon from "../../assets/wheat-svgrepo-com.svg";
+import Axios from "../../utils/Axios"
+import Cookies from 'js-cookie';
 
-const ModalPopup = ({ isOpen, onClose, product }) => {
+const ModalPopup = ({ isOpen, onClose, product,addToCart }) => {
   const [quantity, setQuantity] = useState(1);
-  const [cart,setcart]=useState([]);
-  const updatedCart=[...cart]
   if (!isOpen || !product) return null;
 
-  const handleAddToCart = () => {
+  const handleAddToCart = () => { 
+    const token = Cookies.get("jwt")
+    console.log(token)
+    if(!token){
+      addToCart({...product,quantity})
+    }else{
+      Axios.post("cart/addCart",{productId:product.id,quantity:quantity},{
+        withCredentials: true}).
+        catch((err)=>console.log(err)) 
+    }
     toast.success('Added to Cart!', {
       className: "toast-color",
       position: "top-right",
@@ -29,10 +38,6 @@ const ModalPopup = ({ isOpen, onClose, product }) => {
       progress: undefined,
       });
     
-    updatedCart.push({ name: product.name, price: product.price, img: product.image, quantity: parseInt(quantity) });
-    setcart(updatedCart);
-    console.log(updatedCart);
-    console.log(`Added ${quantity} of ${product.name} to cart.`);
     setQuantity(1);//once the product added to cart quantity gets reinitialized to 1
     setTimeout(()=>onClose(),2000); // Close the modal after adding to cart
   };
