@@ -1,4 +1,7 @@
 import React from 'react';
+import { MdEdit } from "react-icons/md";
+import { MdDeleteForever } from "react-icons/md";
+import './EachProduct.css';
 
 export const EachProduct = ({ productData, setproductData, setIsProductEdited, updateCurrentEditProduct }) => {
     let s = productData.image.split("\\");
@@ -17,7 +20,6 @@ export const EachProduct = ({ productData, setproductData, setIsProductEdited, u
 
     return (
         <tr className='h-32'>
-            <td className=''>{productData.id}</td>
             <td className=''><img className='w-full h-32 object-cover' src={"http://localhost:5000/" + s[0] + "/" + s[1]} alt={productData.name} /></td>
             <td className=''>{productData.name}</td>
             <td className=''>{productData.price}</td>
@@ -29,7 +31,13 @@ export const EachProduct = ({ productData, setproductData, setIsProductEdited, u
                 return <span key={self.crypto.randomUUID()}>{p} , </span>
             })}</td>
             <td className=''>
-                <span className='text-cyan-800 cursor-pointer' onClick={() => { setIsProductEdited(true); updateCurrentEditProduct(productData); }}>Edit</span>&nbsp;&nbsp;&nbsp;<span onClick={handleDelete} className='text-red-700 cursor-pointer'>Delete</span></td>
+                <span className='text-cyan-800 cursor-pointer icon text-xl' onClick={() => { setIsProductEdited(true); updateCurrentEditProduct(productData); }}>
+                    <MdEdit />
+                </span>
+                <span onClick={handleDelete} className='text-red-700 cursor-pointer icon text-xl'>
+                    <MdDeleteForever />
+                </span>
+            </td>
         </tr>
     );
 };
