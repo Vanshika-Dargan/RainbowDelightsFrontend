@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+ import React, { useState, useRef, useEffect } from 'react';
 import { FaSearch, FaUserCircle, FaShoppingCart } from 'react-icons/fa';
 import { PiCakeDuotone } from "react-icons/pi";
 import { IoIosColorWand } from "react-icons/io";
