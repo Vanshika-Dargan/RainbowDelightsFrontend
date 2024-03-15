@@ -30,7 +30,8 @@ const Login = () => {
       withCredentials: true}
     )
     .then(function (response) {
-      Cookies.set('jwt', response.data.data.jwt, { expires: 1 });
+      console.log(response.data)
+      Cookies.set('jwt', response.data.data.token, { expires: 1 });
       navigate("/")
     })
     .catch(function (error) {

@@ -4,12 +4,12 @@ import { ToastContainer, toast } from 'react-toastify'; //provide react notifica
 import { Tooltip } from 'react-tooltip' // provides tooltip for ingredients
 import 'react-toastify/dist/ReactToastify.css';
 import './ModalPopup.css';
-import EggIcon from "../../assets/egg-svgrepo-com.svg";
-import IceCreamIcon from "../../assets/icecream2-svgrepo-com.svg";
-import ChocolateIcon from "../../assets/chocolate-svgrepo-com.svg";
-import MilkIcon from "../../assets/milk-bottle-svgrepo-com.svg";
-import SugarIcon from "../../assets/sugar-svgrepo-com.svg";
-import WheatIcon from "../../assets/wheat-svgrepo-com.svg";
+import EggIcon from "../../assets/Ingredients/egg-svgrepo-com.svg";
+import IceCreamIcon from "../../assets/Ingredients/icecream2-svgrepo-com.svg";
+import ChocolateIcon from "../../assets/Ingredients/chocolate-svgrepo-com.svg";
+import MilkIcon from "../../assets/Ingredients/milk-bottle-svgrepo-com.svg";
+import SugarIcon from "../../assets/Ingredients/sugar-svgrepo-com.svg";
+import WheatIcon from "../../assets/Ingredients/wheat-svgrepo-com.svg";
 import Axios from "../../utils/Axios"
 import Cookies from 'js-cookie';
 
@@ -67,15 +67,15 @@ const ModalPopup = ({ isOpen, onClose, product,addToCart,changeCount }) => {
           <div className="w-1/2 p-4">
             {product.piece && product.weight && <h2 className="text-2xl font-extrabold colorname">{product.name} - {product.piece} pieces ({product.weight}g)</h2>}
             {product.piece && !product.weight && <h2 className="text-2xl font-extrabold colorname">{product.name} - {product.piece} pieces</h2>}
-            {!product.piece && product.weight && <h2 className="text-2xl font-extrabold colorname">{product.name} ({product.weight}g)</h2>}
+            {!product.piece && product.weight!=0 && <h2 className="text-2xl font-extrabold colorname">{product.name} ({product.weight})</h2>}
             {!product.piece && !product.weight && <h2 className="text-2xl font-extrabold colorname">{product.name}</h2>}
             {/* Displays the ingredients */}
             <p className="mt-2 font-medium" >Ingredients:</p>
             {product.ingredients.map((image) =>{
             //  checks image and adds tooltip according to the image
-             return (<img src={image} className='inline pr-2' data-tooltip-id="my-tooltip"
-            data-tooltip-content={image === EggIcon ? "Egg" : image===MilkIcon ? "Milk" : image === WheatIcon ? "Wheat" :
-            image === SugarIcon ? "Sugar" : image === ChocolateIcon ? "Coco" : image === IceCreamIcon ? "Ice Cream" : "none"}
+             return (<img src={ image === "egg" ? EggIcon : image === "milk" ? MilkIcon : image === "wheat" ? WheatIcon :
+               image === "sugar" ? SugarIcon : image === "choco" ? ChocolateIcon : image === "ice" ? IceCreamIcon : "none"} className='inline pr-2'      data-tooltip-id="my-tooltip"
+                data-tooltip-content={image}
                 data-tooltip-place="top"/>);
             })}
             {/* Add tooltip to ingredients */}

@@ -9,15 +9,48 @@ import ModalPopup from '..//ModalPopup/ModalPopup';
 // import ProductsData from "../../ProductsData";
 import Axios from "../../utils/Axios" 
 import { toast } from 'react-toastify';
+import Cookies from 'js-cookie';
 
 export default function Navbar({addToCart, countCart,changeCount}) {
-    // const [countCart, setCartItemCount] = useState(0 );
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
     const [searchTerm, setSearchTerm] = useState('');
     const [filteredSuggestions, setFilteredSuggestions] = useState([]);
     const [selectedProduct, setSelectedProduct] = useState(null); // For ModalPopup
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [login,setLogin] = useState(true)
+    const [admin,setAdmin]= useState('')
+
+    useEffect(()=>{
+        const token = Cookies.get("jwt");
+        if(token){
+            setLogin(false)
+        }else{
+            setLogin(true)
+        }
+        if(token){
+            Axios.get("api/adminProtection",{
+                withCredentials: true})
+                .then((res)=>{
+                    if(res.data.status){
+                        setAdmin(res.data.userName)
+                    }else{
+                        setAdmin("")
+                    }
+                })
+                .catch((err)=>console.log(err))
+        }
+    },[login])
+
+    const logout = () =>{
+        Axios.get("api/logout",{
+            withCredentials: true})
+            .then((res)=>{
+                setLogin(true)
+                Cookies.remove('jwt');
+            })
+            .catch((err)=>console.log(err))
+    }
 
     useEffect(() => {
         if (searchTerm.trim()) {
@@ -84,7 +117,7 @@ export default function Navbar({addToCart, countCart,changeCount}) {
                                             className="flex items-center p-2 hover:bg-gray-100 cursor-pointer"
                                             onClick={() => selectProduct(product)}
                                         >
-                                            <img src={product.img} alt={product.name} className="h-10 w-10 object-cover mr-2" />
+                                            <img src={product.image} alt={product.name} className="h-10 w-10 object-cover mr-2" />
                                             <span>{product.name}</span>
                                         </div>
                                     ))}
@@ -105,9 +138,14 @@ export default function Navbar({addToCart, countCart,changeCount}) {
                             </div>
                             {isDropdownOpen && (
                                 <div className="absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-xl z-20">
-                                    <Link to="/login" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setIsDropdownOpen(false)}>Login / Sign Up</Link>
-                                    <Link to="/orders" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setIsDropdownOpen(false)}>Order Summary</Link>
-                                    <Link to="/admin" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setIsDropdownOpen(false)}>Admin Dashboard</Link>
+                                    {
+                                        login?
+                                            <Link to="/login" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setIsDropdownOpen(false)}>Login / Sign Up</Link>:
+                                            <Link to="/" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={logout}>Log Out</Link>
+                                    }
+                                    {
+                                        admin==="admin"?<Link to="/admin" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setIsDropdownOpen(false)}>Admin Dashboard</Link>:<></>
+                                    }
                                 </div>
                             )}
                         </div>

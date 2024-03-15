@@ -4,8 +4,8 @@ import { MdDeleteForever } from "react-icons/md";
 import './EachProduct.css';
 
 export const EachProduct = ({ productData, setproductData, setIsProductEdited, updateCurrentEditProduct }) => {
-    let s = productData.image.split("\\");
-
+    // let s = productData.image.split("\\");
+    // console.log(s)
     function handleDelete() {
         fetch(`http://localhost:5000/product/delete/${productData.id}`, {
             method: 'DELETE'
@@ -20,7 +20,7 @@ export const EachProduct = ({ productData, setproductData, setIsProductEdited, u
 
     return (
         <tr className='h-32'>
-            <td className=''><img className='w-full h-32 object-cover' src={"http://localhost:5000/" + s[0] + "/" + s[1]} alt={productData.name} /></td>
+            <td className=''><img className='w-full h-32 object-cover' src={productData.image} alt={productData.name} /></td>
             <td className=''>{productData.name}</td>
             <td className=''>{productData.price}</td>
             <td className=''>{productData.weight}</td>

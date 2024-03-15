@@ -10,15 +10,28 @@ import Footer from './components/Footer/Footer';
 import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 import Login from './components/LoginSignup/Login';
 import Signup from './components/LoginSignup/Signup/Signup';
-import Orders from './components/Orders/Orders';
+// import Orders from './components/Orders/Orders';
 import Admin from './components/Admin/Admin';
 import Chatbox from "./components/Chatbox/Chatbox.jsx";
 import CakeCustomization from './components/CakeCustomization/CakeCustomization';
+import Cookies from 'js-cookie';
+import Axios from './utils/Axios.js';
 
 function App() {
   const [addToCart,setAddToCart] = useState([]);
   const [countCart,setCountCart] = useState(0)
 
+  useState(()=>{
+    const token = Cookies.get("jwt")
+    if(token){  
+      Axios.get("cart/countCart",{
+        withCredentials: true})
+        .then((res)=>{
+          // console.log(res)
+          setCountCart(res.data.count)
+        }).catch((err)=>console.log(err))
+    }
+  },[])
   const changeAddToCart = (data)=>{
     setAddToCart([data])
     setCountCart(addToCart.length+1)
@@ -33,11 +46,29 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path="/customize" element={<><Navbar countCart={countCart} addToCart={changeAddToCart} changeCount={setCountCart}/><CakeCustomization /><Footer /></>} />
-          <Route path="/cart" element={<><Navbar countCart={countCart} addToCart={changeAddToCart} changeCount={setCountCart}/><ShoppingCart addToCart={addToCart} changeAddToCart={removeAddToCart} changeCount={setCountCart} /><Footer /></>} />
-          <Route path="/login" element={<><Login/></>} />
+          <Route path="/customize" element={
+          <>
+            <Navbar countCart={countCart} addToCart={changeAddToCart} changeCount={setCountCart}/>
+            <CakeCustomization />
+            <Footer />
+          </>} />
+          <Route path="/cart" element={
+          <>
+            <Navbar countCart={countCart} addToCart={changeAddToCart} changeCount={setCountCart}/>
+            <ShoppingCart addToCart={addToCart} changeAddToCart={removeAddToCart} changeCount={setCountCart} />
+            <Footer />
+          </>} />
+          <Route path="/login" element={
+          <>
+            <Login/>
+          </>} />
           {/* <Route path="/profile" element={<><Navbar /><Profile /><Footer /></>} /> */}
-          <Route path="/orders" element={<><Navbar countCart={countCart} addToCart={changeAddToCart} changeCount={setCountCart}/><Orders /> <Footer /></>} />
+          {/* <Route path="/orders" element={
+          <>
+            <Navbar countCart={countCart} addToCart={changeAddToCart} changeCount={setCountCart}/>
+            <Orders />
+            <Footer />
+          </>} /> */}
           <Route path="/admin" element={<Admin />} />
           <Route path="/signup" element={<><Signup /></>} />
           <Route path="/" element = {
@@ -52,7 +83,6 @@ function App() {
             </>
           } />
         </Routes>
-        
       </Router>
       </>
   );

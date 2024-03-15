@@ -12,13 +12,14 @@ const ShoppingCart = ({addToCart, changeAddToCart, changeCount}) => {
   useEffect(()=>{
     const token = Cookies.get("jwt")
     if(!token){
-      setProducts(prev=> [...addToCart])
+      setProducts([...addToCart])
     }else{
       Axios.get("cart/getCart",{
         withCredentials: true})
         .then((res)=>{
-          changeCount(res.data.count)
+          console.log(res.data.dataSet)
           setProducts([...res.data.dataSet])
+          changeCount(res.data.count)
         })
     }
   },[])

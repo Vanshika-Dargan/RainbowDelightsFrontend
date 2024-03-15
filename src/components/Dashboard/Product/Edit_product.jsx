@@ -4,9 +4,9 @@ export const Edit_product = ({ currentEditProduct, setIsProductEdited }) => {
     const [productData, setProductData] = useState(currentEditProduct);
     const [stringIngredients, setStringIngredients] = useState(formatIngredients());
 
-    let s = productData.image.split("\\");
+    // let s = productData.image.split("\\");
     console.log(currentEditProduct);
-    const [newImg, setNewImg] = useState(`http://localhost:5000/${s[0]}/${s[1]}`);
+    const [newImg, setNewImg] = useState(productData.image);
 
     // Function to handle image change
     const handleImageChange = (event) => {

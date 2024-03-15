@@ -39,9 +39,7 @@ function CakeCustomization() {
         .catch((err)=>console.log(err.message))
 
     Axios.get("/product/getWeight")
-        .then((res)=>{ 
-          console.log(res.data)
-          setWeight([...res.data])})
+        .then((res)=> setWeight([...res.data]))
         .catch((err)=>console.log(err.message))    
   },[])
 

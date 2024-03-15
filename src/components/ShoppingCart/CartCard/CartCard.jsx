@@ -33,7 +33,7 @@ const CartCard = ({ product, updateQuantity, removeFromCart }) => {
   return (
     <div className="flex justify-between items-center bg-card-color p-4 shadow rounded-lg mb-3 mx-6 my-6 h-30">
       {/* Product Image */}
-      <img src={product.img} alt={product.name} className="w-16 h-16 rounded-full" />
+      <img src={product.image} alt={product.name} className="w-16 h-16 rounded-full" />
 
       {/* Product Details */}
       <div className="flex flex-col ml-4">

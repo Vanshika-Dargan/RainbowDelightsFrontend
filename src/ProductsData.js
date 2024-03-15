@@ -21,6 +21,7 @@ import wheat from "./assets/wheat-svgrepo-com.svg";
 import sugar from "./assets/sugar-svgrepo-com.svg";
 import choco from "./assets/chocolate-svgrepo-com.svg";
 import ice from "./assets/icecream2-svgrepo-com.svg";
+
 const ProductsData=[
 
     {
@@ -31,7 +32,7 @@ const ProductsData=[
         quantityPerBox:null,
         ingredients:[egg,milk,sugar],
         weight:1000,
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quae molestiae blanditiis autem quasi ducimus.",
+        description: "c",
         category: "Cakes"
     },
     {

@@ -10,8 +10,8 @@ export const Product = ({ setIsProductEdited, updateCurrentEditProduct, setIsAdd
         try {
             const response = await fetch('http://localhost:5000/product/products');
             const jsonData = await response.json();
-            setproductData(jsonData);
-            console.log(jsonData);
+            setproductData([...jsonData]);
+            console.log(jsonData[0]);
         } catch (error) {
             console.error('Error fetching data:', error);
         }
