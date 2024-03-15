@@ -47,6 +47,7 @@ export default function Navbar({addToCart, countCart,changeCount}) {
             withCredentials: true})
             .then((res)=>{
                 setLogin(true)
+                setAdmin("")
                 Cookies.remove('jwt');
             })
             .catch((err)=>console.log(err))

@@ -17,7 +17,6 @@ const ShoppingCart = ({addToCart, changeAddToCart, changeCount}) => {
       Axios.get("cart/getCart",{
         withCredentials: true})
         .then((res)=>{
-          console.log(res.data.dataSet)
           setProducts([...res.data.dataSet])
           changeCount(res.data.count)
         })
